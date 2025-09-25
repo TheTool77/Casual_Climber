@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36414.22 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Casual_Climber", "src\Casual_Climber\Casual_Climber.csproj", "{A8ABC795-74F6-FC4A-E5C7-0EEFAD29EBDC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A8ABC795-74F6-FC4A-E5C7-0EEFAD29EBDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8ABC795-74F6-FC4A-E5C7-0EEFAD29EBDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8ABC795-74F6-FC4A-E5C7-0EEFAD29EBDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8ABC795-74F6-FC4A-E5C7-0EEFAD29EBDC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C3E95579-465E-4503-A2D7-2AE4E503FA4B}
+	EndGlobalSection
+EndGlobal
