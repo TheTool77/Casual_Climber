@@ -20,7 +20,7 @@ readme = "../../README.md"
 outdir = "../../artifacts/thunderstore/"
 
 [[build.copy]]
-source = "../../artifacts/bin/PEAK_ToolsTools/release/com.TheTool.Casual_Climber.dll"
+source = "../../artifacts/bin/Casual_Climber/release/com.TheTool.Casual_Climber.dll"
 target = "plugins/"
 
 [[build.copy]]
