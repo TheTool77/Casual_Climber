@@ -49,8 +49,7 @@
 
 	  
 ## 📷 Casual Climber Screens
-![Casual Climber Menus](https://imgur.com/a/f62pEvp)
-![Casual Climber Menus](https://i.imgur.com/6h03ybh.jpeg)
+- ![Casual Climber Menus](https://i.imgur.com/6h03ybh.jpeg) 
   
 
 
