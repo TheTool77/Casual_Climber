@@ -11,9 +11,7 @@ namespace Casual_Climber
     [BepInPlugin(MyGUID, PluginName, VersionString)]
     public class Casual_ClimberPlugin : BaseUnityPlugin
     {
-        // Mod specific details. MyGUID should be unique, and follow the reverse domain pattern
-        // com.mynameororg.pluginname
-        // Version should be a valid version string.
+        // Begin Casual Climber Mod for PEAK by TheTool
         private const string MyGUID = "com.TheTool.Casual_Climber";
         private const string PluginName = "Casual_Climber";
         private const string VersionString = "1.0.0";
@@ -85,8 +83,10 @@ namespace Casual_Climber
         public static string DrowsyModifierKey = "09. Disable Drowsiness";
         public static string CurseModifierKey = "10. Disable Curse";
         public static string InjuryModifierKey = "11. Disable Injury";
-        public static string KeyboardKey_1Key = "12. Enable/Disable PEAK-ToolsTools";
-        public static string KeyboardKey_2Key = "13. PEAK-ToolsTools Configuration";
+        public static string KeyboardKey_1Key = "12. Enable/Disable PEAK-ToolsTools Key";
+        public static string KeyboardKey_1_AltKey = "13. Enable/Disable PEAK-ToolsTools Alt Key";
+        public static string KeyboardKey_2Key = "14. PEAK-ToolsTools Configuration Key";
+        public static string KeyboardKey_2_AltKey = "15. PEAK-ToolsTools Configuration Alt Key";
 
         // Configuration entries
         public static ConfigEntry<float>? JumpHeight;
@@ -101,7 +101,9 @@ namespace Casual_Climber
         public static ConfigEntry<bool>? CurseModifier;
         public static ConfigEntry<bool>? InjuryModifier;
         public static ConfigEntry<KeyboardShortcut>? KeyboardKey_1;
+        public static ConfigEntry<KeyboardShortcut>? KeyboardKey_1_Alt;
         public static ConfigEntry<KeyboardShortcut>? KeyboardKey_2;
+        public static ConfigEntry<KeyboardShortcut>? KeyboardKey_2_Alt;
 
         private static readonly Harmony Harmony = new(MyGUID);
         public static ManualLogSource Log = new(PluginName);
@@ -241,7 +243,7 @@ namespace Casual_Climber
 
 
 
-            // Keyboard shortcut Mod Activation
+            // Keyboard Key Mod Activation
             KeyboardKey_1 = Config.Bind
                 ("General",
                 KeyboardKey_1Key,
@@ -249,13 +251,28 @@ namespace Casual_Climber
                 new KeyboardShortcut(KeyCode.KeypadPlus), 
                 new ConfigDescription("Activate Mod Key."));
 
+            // Keyboard Alt Key Mod Activation Alt
+            KeyboardKey_1_Alt = Config.Bind
+                ("General",
+                KeyboardKey_1_AltKey,
+                // new KeyboardKey_1(KeyCode.A, KeyCode.LeftControl));
+                new KeyboardShortcut(KeyCode.Equals),
+                new ConfigDescription("Activate Mod Key."));
 
-            // Keyboard shortcut Mod Config
+            // Keyboard Key Mod Config
             KeyboardKey_2 = Config.Bind
                 ("General",
                 KeyboardKey_2Key,
                 // new KeyboardKey_1(KeyCode.A, KeyCode.LeftControl));
                 new KeyboardShortcut(KeyCode.KeypadMinus),
+                new ConfigDescription("Show Mod Config Key."));
+
+            // Keyboard Alt Key Mod Config
+            KeyboardKey_2_Alt = Config.Bind
+                ("General",
+                KeyboardKey_2_AltKey,
+                // new KeyboardKey_1(KeyCode.A, KeyCode.LeftControl));
+                new KeyboardShortcut(KeyCode.Minus),
                 new ConfigDescription("Show Mod Config Key."));
 
 
@@ -315,17 +332,30 @@ namespace Casual_Climber
             //Display Config GUI
             if (KeyboardKey_2 != null)
             {
-                if (Casual_ClimberPlugin.KeyboardKey_2.Value.IsDown() || Input.GetKeyDown(KeyCode.Minus))
+                if (Casual_ClimberPlugin.KeyboardKey_2.Value.IsDown())
+                {
+                    if (displayUIConfigFlag == false)
+                    { displayUIConfigFlag = true; }
+                }
+            }
+            if (KeyboardKey_2_Alt != null)
+            {
+                if (Casual_ClimberPlugin.KeyboardKey_2_Alt.Value.IsDown())
                 {
                     if (displayUIConfigFlag == false)
                     { displayUIConfigFlag = true; }
                 }
             }
 
-            //Display Mod GUI and Activate Toggle Values
+            //Display Mod GUI / Activate Toggle Values
             if (KeyboardKey_1 != null)
             {
-                if (Casual_ClimberPlugin.KeyboardKey_1.Value.IsDown() || Input.GetKeyDown(KeyCode.Equals))
+                if (Casual_ClimberPlugin.KeyboardKey_1.Value.IsDown())
+                { MasterSwitchesToggle(); }
+            }
+            if (KeyboardKey_1_Alt != null)
+            {
+                if (Casual_ClimberPlugin.KeyboardKey_1_Alt.Value.IsDown())
                 { MasterSwitchesToggle(); }
             }
 
@@ -342,8 +372,6 @@ namespace Casual_Climber
 
             if (displayUIFlag == false)
             { displayUIFlag = true; }
-
-
 
             // jumpGravityToggle
             if (jumpGravityToggle == false)
@@ -617,8 +645,20 @@ namespace Casual_Climber
                 KeyboardShortcut nullValue = (KeyboardShortcut)settingChangedEventArgs.ChangedSetting.BoxedValue;
             }
 
+            // KeyboardKey_1_AltKey ChangedSetting
+            if (settingChangedEventArgs.ChangedSetting.Definition.Key == KeyboardKey_1_AltKey)
+            {
+                KeyboardShortcut nullValue = (KeyboardShortcut)settingChangedEventArgs.ChangedSetting.BoxedValue;
+            }
+
             // KeyboardKey_2Key ChangedSetting
             if (settingChangedEventArgs.ChangedSetting.Definition.Key == KeyboardKey_2Key)
+            {
+                KeyboardShortcut nullValue = (KeyboardShortcut)settingChangedEventArgs.ChangedSetting.BoxedValue;
+            }
+
+            // KeyboardKey_2_AltKey ChangedSetting
+            if (settingChangedEventArgs.ChangedSetting.Definition.Key == KeyboardKey_2_AltKey)
             {
                 KeyboardShortcut nullValue = (KeyboardShortcut)settingChangedEventArgs.ChangedSetting.BoxedValue;
             }
