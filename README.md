@@ -15,9 +15,9 @@
 - All values saved to config in PEAK\BepInEx\config
 
 ## 📦 Install
-- 1. Download via [Thunderstore](https://thunderstore.io/c/peak/) or use the thunderstore mod manager app
-- 2. Place the `.dll` file in: /PEAK/BepInEx/plugins/
-- 3. Launch game
+- Download via [Thunderstore](https://thunderstore.io/c/peak/) or use the thunderstore mod manager app
+- Place the `.dll` file in: /PEAK/BepInEx/plugins/
+- Launch game
 
 ## 🎮 Usage
 - Press `Keypad +` or `=` to toggle mod on/off.
