@@ -7,7 +7,7 @@ repository = "https://thunderstore.io"
 [package]
 namespace = "TheTool"
 name = "Casual_Climber"
-description = "TODO: Fill in short mod description."
+description = "Play PEAK casually."
 websiteUrl = "https://github.com/TheTool77/Casual_Climber"
 containsNsfwContent = false
 
