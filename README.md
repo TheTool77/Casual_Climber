@@ -3,8 +3,7 @@
 *Cheaty mod to allow friends to have very casual no worry plays*   
 
 ## 🛠️ Requirements
-- BepInEx-BepInExPack_PEAK
-    - [BepInEx](https://thunderstore.io/c/peak/p/BepInEx/BepInExPack_PEAK/)
+- [BepInEx-BepInExPack_PEAK](https://thunderstore.io/c/peak/p/BepInEx/BepInExPack_PEAK/)
   
 ## 👨‍💻 Mod Features  
 - Casual Climber mod is for those who would prefer a much easier climb or for those looking for a chill worry free fun time.
@@ -49,7 +48,7 @@
 
 	  
 ## 📷 Casual Climber Screens
-- ![Casual Climber Menus](https://i.imgur.com/6h03ybh.jpeg) 
+![Casual Climber Menus](https://i.imgur.com/6h03ybh.jpeg) 
   
 
 
