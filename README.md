@@ -1,31 +1,53 @@
-# Casual_Climber
+# ⛰️ Casual Climber for PEAK
+**Adjust player stats and afflictions for casual play.**  
+*Cheaty mod to allow friends to have very casual no worry plays*   
 
-Describe your project here!
+## 🛠️ Requirements
+- [BepInEx](https://thunderstore.io/c/peak/p/BepInEx/BepInExPack_PEAK/)
+  
+## 👨‍💻 Mod Features  
+- Casual Climber mod is for those who would prefer a much easier climb or for those looking for a chill worry free fun time.
+- Client side functions.
+- Toggle all stats and afflictions on/off indepedently via ingame menus or config.
+- Multiple key bind activation methods to toggle on/off. (Change binds in config)
 
-## Template Instructions
+## ⚙️ Configuration
+- All values saved to config in PEAK\BepInEx\config
 
-You can remove this section after you've set up your project.
+## 📦 Install
+- 1. Download via [Thunderstore](https://thunderstore.io/c/peak/) or use the thunderstore mod manager app
+- 2. Place the `.dll` file in: /PEAK/BepInEx/plugins/
+- 3. Launch game
 
-Next steps:
+## 🎮 Usage
+- Press `Keypad +` or `=` to toggle mod on/off.
+- Press `Keypad -` or `-` to display config menu.
 
-- Create a copy of the `Config.Build.user.props.template` file and name it `Config.Build.user.props`
-  - This will automate copying your plugin assembly to `BepInEx/plugins/`
-  - Configure the paths to point to your game path and your `BepInEx/plugins/`
-  - Game assembly references should work if the path to the game is valid
-- Search `TODO` in the whole project to see what you should configure or modify
+## 🧗 Values
+| Setting                | Values Min-Max, On-Off, Key         | Default Value | Effect                                                                                                         |
+| ---------------------- | ----------------------------------- | ------------- | -------------------------------------------------------------------------------------------------------------- |
+| Jump Height            | 15 - 60                             | 60            | Increase jump height                                                                                           |
+| Movement Speed         | 25 - 50                             | 50            | Increase movenent speed                                                                                        |
+| Climbing Speed         | 1x - 2x                             | 2x            | Increase climbing speed                                                                                        |
+| Stamina Modifier       | On - Off                            | On            | Modifies stamina regen, slowly regen while hanging (not infinite)                                              |
+| Disable Hunger         | On - Off                            | On            | Toggle hunger affliction On Off                                                                                |
+| Disable Poison         | On - Off                            | On            | Toggle poison affliction On Off                                                                                |
+| Disable Heat           | On - Off                            | On            | Toggle heat affliction On Off                                                                                  |
+| Disable Cold           | On - Off                            | On            | Toggle cold affliction On Off                                                                                  |
+| Disable Drowsy         | On - Off                            | On            | Toggle drowsiness affliction On Off                                                                            |
+| Disable Curse          | On - Off                            | On            | Toggle curse affliction On Off                                                                                 |
+| Disable Injury         | On - Off                            | On            | Toggle injury affliction On Off                                                                                |
+| Activation Key         | Any                                 | Keypad +      | Primary Key used to Enable Disable Casual Climber mod (rebind in config file)                                  |
+| Activation Key Alt     | Any                                 | =             | Alternate Key used to Enable Disable Casual Climber mod (rebind in config file)                                |
+| Config Menu Key        | Any                                 | Keypad -      | Primary Key used to display Casual Climber Configuration Menu (rebind in config file)                          |
+| Config Menu Key Alt    | Any                                 | -             | Alternate Key used to display Casual Climber Configuration Menu (rebind in config file)                        |
+   
 
-### Thunderstore Packaging
+	  
+## 📷 Casual Climber Screens
+![Casual Climber Menus](https://share.evaisa.dev/1q2rZTuPT.jpg)  
+  
 
-This template comes with Thunderstore packaging built-in, using [TCLI](<https://github.com/thunderstore-io/thunderstore-cli>).
 
-You can build Thunderstore packages by running:
-
-```sh
-dotnet build -c Release -target:PackTS -v d
-```
-
-> [!NOTE]  
-> You can learn about different build options with `dotnet build --help`.  
-> `-c` is short for `--configuration` and `-v d` is `--verbosity detailed`.
-
-The built package will be found at `artifacts/thunderstore/`.
+## 👤 Credit  
+    - **Author** [TheTool](https://github.com/TheTool77/Casual_Climber/) 
