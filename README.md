@@ -3,11 +3,15 @@
 *Cheaty mod to allow friends to have very casual no worry plays*   
 
 ## 🛠️ Requirements
-- [BepInEx](https://thunderstore.io/c/peak/p/BepInEx/BepInExPack_PEAK/)
+- BepInEx-BepInExPack_PEAK
+    - [BepInEx](https://thunderstore.io/c/peak/p/BepInEx/BepInExPack_PEAK/)
   
 ## 👨‍💻 Mod Features  
 - Casual Climber mod is for those who would prefer a much easier climb or for those looking for a chill worry free fun time.
-- Client side functions.
+- Client side functions
+- Increase jump height
+- Increase walk/sprint speed
+- Increase climbing speed
 - Toggle all stats and afflictions on/off indepedently via ingame menus or config.
 - Multiple key bind activation methods to toggle on/off. (Change binds in config)
 
