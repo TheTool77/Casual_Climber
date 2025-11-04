@@ -8,7 +8,7 @@ repository = "https://thunderstore.io"
 namespace = "TheTool"
 name = "Casual_Climber"
 description = "TODO: Fill in short mod description."
-websiteUrl = "" # TODO: Add a link to your mod repository here (optional)
+websiteUrl = "https://github.com/TheTool77/Casual_Climber"
 containsNsfwContent = false
 
 [package.dependencies]
