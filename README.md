@@ -24,8 +24,8 @@
 - Launch game
 
 ## 🎮 Usage
-- Press `Keypad +` or `=` to toggle mod on/off.
-- Press `Keypad -` or `-` to display config menu.
+- Press `Numpad +` or `=` to toggle mod on/off.
+- Press `Numpad -` or `-` to display config menu.
 
 ## 🧗 Values
 | Setting                | Values Min-Max, On-Off, Key         | Default Value | Effect                                                                                                         |
@@ -41,9 +41,9 @@
 | Disable Drowsy         | On - Off                            | On            | Toggle drowsiness affliction On Off                                                                            |
 | Disable Curse          | On - Off                            | On            | Toggle curse affliction On Off                                                                                 |
 | Disable Injury         | On - Off                            | On            | Toggle injury affliction On Off                                                                                |
-| Activation Key         | Any                                 | Keypad +      | Primary Key used to Enable Disable Casual Climber mod (rebind in config file)                                  |
+| Activation Key         | Any                                 | Numpad +      | Primary Key used to Enable Disable Casual Climber mod (rebind in config file)                                  |
 | Activation Key Alt     | Any                                 | =             | Alternate Key used to Enable Disable Casual Climber mod (rebind in config file)                                |
-| Config Menu Key        | Any                                 | Keypad -      | Primary Key used to display Casual Climber Configuration Menu (rebind in config file)                          |
+| Config Menu Key        | Any                                 | Numpad -      | Primary Key used to display Casual Climber Configuration Menu (rebind in config file)                          |
 | Config Menu Key Alt    | Any                                 | -             | Alternate Key used to display Casual Climber Configuration Menu (rebind in config file)                        |
    
 
@@ -54,4 +54,4 @@
 
 
 ## 👤 Credit  
-    - **Author** [TheTool](https://github.com/TheTool77/Casual_Climber/) 
+    **Author** [TheTool](https://github.com/TheTool77/Casual_Climber/) 
