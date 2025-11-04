@@ -11,7 +11,7 @@ namespace Casual_Climber
     [BepInPlugin(MyGUID, PluginName, VersionString)]
     public class Casual_ClimberPlugin : BaseUnityPlugin
     {
-        // Begin Casual Climber Mod for PEAK by TheTool
+        // Begin Casual Climber Mod for PEAK by TheTool..
         private const string MyGUID = "com.TheTool.Casual_Climber";
         private const string PluginName = "Casual_Climber";
         private const string VersionString = "1.0.0";
