@@ -49,9 +49,9 @@ namespace Casual_Climber.Patches
         public static string mod_ActiveStatus = "Disabled";
         public static Color colorDisplayed;
 
-        public static string toolsToolsActivatedString = Casual_ClimberPlugin.toolsToolsActivatedString;
-        public static string toolsToolsDeactivatedString = Casual_ClimberPlugin.toolsToolsDeactivatedString;
-        public static string toolsToolsActivationStatus = Casual_ClimberPlugin.toolsToolsActivatedString;
+        public static string casualClimber_ActivatedString = Casual_ClimberPlugin.casualClimber_ActivatedString;
+        public static string casualClimber_DeactivatedString = Casual_ClimberPlugin.casualClimber_DeactivatedString;
+        public static string casualClimber_ActivationStatus = Casual_ClimberPlugin.casualClimber_ActivatedString;
 
         public static string jumpString = Casual_ClimberPlugin.jumpString;
         public static float jumpString_Value;
@@ -113,11 +113,11 @@ namespace Casual_Climber.Patches
         {
             if (ui_Active)
             {
-                toolsToolsActivationStatus = toolsToolsActivatedString;
+                casualClimber_ActivationStatus = casualClimber_ActivatedString;
             }
             else
             {
-                toolsToolsActivationStatus = toolsToolsDeactivatedString;
+                casualClimber_ActivationStatus = casualClimber_DeactivatedString;
             }
 
             mod_ActiveStatus = ui_Active ? "Enabled" : "Disabled";
@@ -243,7 +243,7 @@ namespace Casual_Climber.Patches
                             GUILayout.Label("Casual Climber: " + mod_ActiveStatus, guistyle, []);
                             GUI.color = colorDisplayed;
                             GUI.contentColor = colorDisplayed;
-                            GUILayout.Label($"{toolsToolsActivationStatus}", guistyle, []);
+                            GUILayout.Label($"{casualClimber_ActivationStatus}", guistyle, []);
                             GUILayout.Space(26);
                             GUI.color = Color.white;
                             GUI.contentColor = Color.white;

@@ -23,8 +23,8 @@ namespace Casual_Climber
         public static bool displayUIFlag = false;
         public static bool displayUIConfigFlag = false;
 
-        public static string toolsToolsActivatedString = "Config Values Applied";
-        public static string toolsToolsDeactivatedString = "Default Values Applied";
+        public static string casualClimber_ActivatedString = "Config Values Applied";
+        public static string casualClimber_DeactivatedString = "Default Values Applied";
 
         public static string jumpString = "Jump Height Set to: ";
         public static float jumpString_Value = jumpGravity;
