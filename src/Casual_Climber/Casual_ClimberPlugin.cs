@@ -315,7 +315,7 @@ namespace Casual_Climber
             //Display Config GUI
             if (KeyboardKey_2 != null)
             {
-                if (Casual_ClimberPlugin.KeyboardKey_2.Value.IsDown())
+                if (Casual_ClimberPlugin.KeyboardKey_2.Value.IsDown() || Input.GetKeyDown(KeyCode.Minus))
                 {
                     if (displayUIConfigFlag == false)
                     { displayUIConfigFlag = true; }
@@ -325,7 +325,7 @@ namespace Casual_Climber
             //Display Mod GUI and Activate Toggle Values
             if (KeyboardKey_1 != null)
             {
-                if (Casual_ClimberPlugin.KeyboardKey_1.Value.IsDown())
+                if (Casual_ClimberPlugin.KeyboardKey_1.Value.IsDown() || Input.GetKeyDown(KeyCode.Equals))
                 { MasterSwitchesToggle(); }
             }
 
