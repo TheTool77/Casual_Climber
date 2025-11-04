@@ -13,7 +13,7 @@ namespace Casual_Climber
     {
         // Mod specific details. MyGUID should be unique, and follow the reverse domain pattern
         // com.mynameororg.pluginname
-        // Version should be a valid version string.
+        // Version should be a valid version string....
         private const string MyGUID = "com.TheTool.Casual_Climber";
         private const string PluginName = "Casual_Climber";
         private const string VersionString = "1.0.0";
