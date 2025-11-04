@@ -54,4 +54,4 @@
 
 
 ## 👤 Credit  
-    **Author** [TheTool](https://github.com/TheTool77/Casual_Climber/) 
+    - **Author** ![TheTool](https://github.com/TheTool77/Casual_Climber/) 
