@@ -267,19 +267,19 @@ namespace Casual_Climber.Patches
                         Cursor.visible = true;
 
                         GUILayout.BeginArea(new Rect(400, 30f, 360f, 440f), GUI.skin.box);
-                            GUILayout.BeginArea(new Rect(6f, 6f, 348f, 428f), GUI.skin.button);
+                        GUILayout.BeginArea(new Rect(6f, 6f, 348f, 428f), GUI.skin.button);
 
-                                GUILayout.Label(string.Format($"Casual Climber Cofiguration"), guistyle, Array.Empty<GUILayoutOption>());
+                        GUILayout.Label(string.Format($"Casual Climber Cofiguration"), guistyle, Array.Empty<GUILayoutOption>());
 
-                                bool closeButton = GUI.Button(new Rect(320f, 8f, 24f, 24f), "X");
-                                if (closeButton)
-                                {
-                                    isConfigVisible = false;
-                                    isValuesVisible = false;
-                                    Debug.Log($"[Casual_Climber] Status " + $"Button Pressed! {closeButton}");
-                                }
+                        bool closeButton = GUI.Button(new Rect(320f, 8f, 24f, 24f), "X");
+                        if (closeButton)
+                        {
+                            isConfigVisible = false;
+                            isValuesVisible = false;
+                            Debug.Log($"[Casual_Climber] Status " + $"Button Pressed! {closeButton}");
+                        }
 
-                                GUILayout.Space(10);
+                        GUILayout.Space(10);
 
                                 // jump slider
                                 GUILayout.Label(string.Format($"Jump Height {Casual_ClimberPlugin.jumpGravity}"), []);
