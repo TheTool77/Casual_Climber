@@ -49,6 +49,7 @@ namespace Casual_Climber.Patches
             //if (keyFlag4)
             //{ Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Injury, 0.2f); }
             //if (keyFlag5)
+            //{ Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Injury, 0f); }
             //{ Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Hunger, 0.2f); }
             //if (keyFlag6)
             //{ Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Poison, 0.2f); }
@@ -60,6 +61,7 @@ namespace Casual_Climber.Patches
             //{ Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Drowsy, 0.2f); }
             //if (keyFlag0)
             //{ Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Curse, 0.2f); }
+            //{ Character.localCharacter.refs.afflictions.ClearAllStatus(false); }
 
             hungerModifier = Casual_ClimberPlugin.hungerModifier;
             hungerModifierToggle = Casual_ClimberPlugin.hungerModifierToggle;
