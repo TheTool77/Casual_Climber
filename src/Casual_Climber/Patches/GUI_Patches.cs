@@ -98,6 +98,31 @@ namespace Casual_Climber.Patches
         public static bool curseModifierString_DefaultValue;
         public static bool curseModifierString_DisplayValue;
 
+        public static string sporesModifierString = Casual_ClimberPlugin.sporesModifierString;
+        public static bool sporesModifierString_Value;
+        public static bool sporesModifierString_DefaultValue;
+        public static bool sporesModifierString_DisplayValue;
+
+        public static string thornsModifierString = Casual_ClimberPlugin.thornsModifierString;
+        public static bool thornsModifierString_Value;
+        public static bool thornsModifierString_DefaultValue;
+        public static bool thornsModifierString_DisplayValue;
+
+        public static string crabModifierString = Casual_ClimberPlugin.crabModifierString;
+        public static bool crabModifierString_Value;
+        public static bool crabModifierString_DefaultValue;
+        public static bool crabModifierString_DisplayValue;
+
+        public static string webModifierString = Casual_ClimberPlugin.webModifierString;
+        public static bool webModifierString_Value;
+        public static bool webModifierString_DefaultValue;
+        public static bool webModifierString_DisplayValue;
+
+        public static string weightModifierString = Casual_ClimberPlugin.weightModifierString;
+        public static bool weightModifierString_Value;
+        public static bool weightModifierString_DefaultValue;
+        public static bool weightModifierString_DisplayValue;
+
         public static string injuryModifierString = Casual_ClimberPlugin.injuryModifierString;
         public static bool injuryModifierString_Value;
         public static bool injuryModifierString_DefaultValue;
@@ -186,6 +211,21 @@ namespace Casual_Climber.Patches
                     curseModifierString_Value = Casual_ClimberPlugin.curseModifierString_Value;
                     curseModifierString_DefaultValue = Casual_ClimberPlugin.curseModifierString_DefaultValue;
 
+                    sporesModifierString_Value = Casual_ClimberPlugin.sporesModifierString_Value;
+                    sporesModifierString_DefaultValue = Casual_ClimberPlugin.sporesModifierString_DefaultValue;
+
+                    thornsModifierString_Value = Casual_ClimberPlugin.thornsModifierString_Value;
+                    thornsModifierString_DefaultValue = Casual_ClimberPlugin.thornsModifierString_DefaultValue;
+
+                    crabModifierString_Value = Casual_ClimberPlugin.crabModifierString_Value;
+                    crabModifierString_DefaultValue = Casual_ClimberPlugin.crabModifierString_DefaultValue;
+
+                    webModifierString_Value = Casual_ClimberPlugin.webModifierString_Value;
+                    webModifierString_DefaultValue = Casual_ClimberPlugin.webModifierString_DefaultValue;
+
+                    weightModifierString_Value = Casual_ClimberPlugin.weightModifierString_Value;
+                    weightModifierString_DefaultValue = Casual_ClimberPlugin.weightModifierString_DefaultValue;
+
                     injuryModifierString_Value = Casual_ClimberPlugin.injuryModifierString_Value;
                     injuryModifierString_DefaultValue = Casual_ClimberPlugin.injuryModifierString_DefaultValue;
 
@@ -201,6 +241,11 @@ namespace Casual_Climber.Patches
                         coldModifierString_DisplayValue = coldModifierString_Value;
                         drowsyModifierString_DisplayValue = drowsyModifierString_Value;
                         curseModifierString_DisplayValue = curseModifierString_Value;
+                        sporesModifierString_DisplayValue = sporesModifierString_Value;
+                        thornsModifierString_DisplayValue = thornsModifierString_Value;
+                        crabModifierString_DisplayValue = crabModifierString_Value;
+                        webModifierString_DisplayValue = webModifierString_Value;
+                        weightModifierString_DisplayValue = weightModifierString_Value;
                         injuryModifierString_DisplayValue = injuryModifierString_Value;
                     }
                     else
@@ -215,13 +260,18 @@ namespace Casual_Climber.Patches
                         coldModifierString_DisplayValue = coldModifierString_DefaultValue;
                         drowsyModifierString_DisplayValue = drowsyModifierString_DefaultValue;
                         curseModifierString_DisplayValue = curseModifierString_DefaultValue;
+                        sporesModifierString_DisplayValue = sporesModifierString_DefaultValue;
+                        thornsModifierString_DisplayValue = thornsModifierString_DefaultValue;
+                        crabModifierString_DisplayValue = crabModifierString_DefaultValue;
+                        webModifierString_DisplayValue = webModifierString_DefaultValue;
+                        weightModifierString_DisplayValue = weightModifierString_DefaultValue;
                         injuryModifierString_DisplayValue = injuryModifierString_DefaultValue;
                     }
    
                     GUI.color = Color.white;
                     GUI.contentColor = Color.white;
-                    GUI.backgroundColor = new Color(255f, 255f, 255f, 1.0f);
-                    //GUI.backgroundColor = Color.grey;
+                    //GUI.backgroundColor = new Color(255f, 255f, 255f, 1.0f);
+                    GUI.backgroundColor = Color.black;
 
                     GUIStyle guiStyleBig = new(GUI.skin.label)
                     {
@@ -235,7 +285,6 @@ namespace Casual_Climber.Patches
                     {
                         fontSize = 18,
                         alignment = TextAnchor.UpperLeft,
-                        //fontStyle = FontStyle.Bold,
                         richText = true
                     };
 
@@ -243,40 +292,47 @@ namespace Casual_Climber.Patches
                     {
                         fontSize = 14,
                         alignment = TextAnchor.UpperLeft,
-                        //fontStyle = FontStyle.Bold,
                         richText = true
                     };
 
-                    GUILayout.BeginArea(new Rect(30f, 30f, 400f, 540f), GUI.skin.box);
-                        GUILayout.BeginArea(new Rect(6f, 6f, 388, 528f), GUI.skin.box);
-                            GUILayout.Label("Casual Climber: " + mod_ActiveStatus, guiStyleBig, []);
-                            GUI.color = colorDisplayed;
-                            GUI.contentColor = colorDisplayed;
-                            GUILayout.Label($"{casualClimber_ActivationStatus}", guiStyleBig, []);
-                            GUILayout.Space(26);
-                            GUI.color = Color.white;
-                            GUI.contentColor = Color.white;
-                            GUILayout.Label(string.Format($"{jumpString} {jumpString_DisplayValue}"), guiStyleMed, []);
-                            GUILayout.Label(string.Format($"{moveSpeedString} {moveSpeedString_DisplayValue}"), guiStyleMed, []);
-                            GUILayout.Label(string.Format($"{climbSpeedString} {climbSpeedString_DisplayValue}"), guiStyleMed, []);
-                            GUILayout.Label(string.Format($"{staminaModifierString} {staminaModifierString_DisplayValue}"), guiStyleMed, []);
-                            GUILayout.Label(string.Format($"{hungerModifierString} {hungerModifierString_DisplayValue}"), guiStyleMed, []);
-                            GUILayout.Label(string.Format($"{poisonModifierString} {poisonModifierString_DisplayValue}"), guiStyleMed, []);
-                            GUILayout.Label(string.Format($"{heatModifierString} {heatModifierString_DisplayValue}"), guiStyleMed, []);
-                            GUILayout.Label(string.Format($"{coldModifierString} {coldModifierString_DisplayValue}"), guiStyleMed, []);
-                            GUILayout.Label(string.Format($"{drowsyModifierString} {drowsyModifierString_DisplayValue}"), guiStyleMed, []);
-                            GUILayout.Label(string.Format($"{curseModifierString} {curseModifierString_DisplayValue}"), guiStyleMed, []);
-                            GUILayout.Label(string.Format($"{injuryModifierString} {injuryModifierString_DisplayValue}"), guiStyleMed, []);
-                        GUILayout.EndArea();
+                    GUILayout.BeginArea(new Rect(30f, 30f, 400f, 596f), GUI.skin.box);
+                    GUILayout.BeginArea(new Rect(6f, 6f, 388, 584f), GUI.skin.box);
+                    GUI.backgroundColor = Color.red;
+                    GUILayout.Label("Casual Climber: " + mod_ActiveStatus, guiStyleBig, []);
+                    GUI.color = colorDisplayed;
+                    GUI.contentColor = colorDisplayed;
+                    //GUI.backgroundColor = new Color(255, 255, 255, 1.0f);
+                    GUILayout.Label($"{casualClimber_ActivationStatus}", guiStyleBig, []);
+                    GUILayout.Space(26);
+                    GUI.color = Color.white;
+                    GUI.contentColor = Color.white;
+                    GUILayout.Label(string.Format($"{jumpString} {jumpString_DisplayValue}"), guiStyleMed, []);
+                    GUILayout.Label(string.Format($"{moveSpeedString} {moveSpeedString_DisplayValue}"), guiStyleMed, []);
+                    GUILayout.Label(string.Format($"{climbSpeedString} {climbSpeedString_DisplayValue}"), guiStyleMed, []);
+                    GUILayout.Label(string.Format($"{staminaModifierString} {staminaModifierString_DisplayValue}"), guiStyleMed, []);
+                    GUILayout.Label(string.Format($"{hungerModifierString} {hungerModifierString_DisplayValue}"), guiStyleMed, []);
+                    GUILayout.Label(string.Format($"{poisonModifierString} {poisonModifierString_DisplayValue}"), guiStyleMed, []);
+                    GUILayout.Label(string.Format($"{heatModifierString} {heatModifierString_DisplayValue}"), guiStyleMed, []);
+                    GUILayout.Label(string.Format($"{coldModifierString} {coldModifierString_DisplayValue}"), guiStyleMed, []);
+                    GUILayout.Label(string.Format($"{drowsyModifierString} {drowsyModifierString_DisplayValue}"), guiStyleMed, []);
+                    GUILayout.Label(string.Format($"{curseModifierString} {curseModifierString_DisplayValue}"), guiStyleMed, []);
+                    GUILayout.Label(string.Format($"{sporesModifierString} {sporesModifierString_DisplayValue}"), guiStyleMed, []);
+                    GUILayout.Label(string.Format($"{thornsModifierString} {thornsModifierString_DisplayValue}"), guiStyleMed, []);
+                    GUILayout.Label(string.Format($"{crabModifierString} {crabModifierString_DisplayValue}"), guiStyleMed, []);
+                    GUILayout.Label(string.Format($"{webModifierString} {webModifierString_DisplayValue}"), guiStyleMed, []);
+                    GUILayout.Label(string.Format($"{weightModifierString} {weightModifierString_DisplayValue}"), guiStyleMed, []);
+                    GUILayout.Label(string.Format($"{injuryModifierString} {injuryModifierString_DisplayValue}"), guiStyleMed, []);
+                        
+                    GUILayout.EndArea();
                     GUILayout.EndArea();
 
                     if (isConfigVisible)
                     {
                         //Cursor.lockState = CursorLockMode.None;
                         //Cursor.visible = true;
-
-                        GUILayout.BeginArea(new Rect(460, 30f, 400, 540f), GUI.skin.box);
-                        GUILayout.BeginArea(new Rect(6f, 6f, 388f, 528f), GUI.skin.button);
+                        GUI.backgroundColor = new Color(20, 20, 20, 1.0f);
+                        GUILayout.BeginArea(new Rect(460, 30f, 400, 596f), GUI.skin.box);
+                        GUILayout.BeginArea(new Rect(6f, 6f, 388f, 584f), GUI.skin.button);
 
                         GUILayout.Label(string.Format($"Casual Climber Cofiguration"), guiStyleBig, Array.Empty<GUILayoutOption>());
 
@@ -293,43 +349,57 @@ namespace Casual_Climber.Patches
                         // jump slider
                         GUILayout.Label(string.Format($"Jump Height {Casual_ClimberPlugin.jumpGravity}"), guiStyleSmall, []);
                         Casual_ClimberPlugin.JumpHeight.Value = GUILayout.HorizontalSlider(Casual_ClimberPlugin.JumpHeight.Value, 15f, 60f, []);
-                            GUILayout.Space(6);
+                        GUILayout.Space(6);
                         // move speed slider
                         GUILayout.Label(string.Format($"Movement Speed {Casual_ClimberPlugin.movementForce}"), guiStyleSmall, []);
                         Casual_ClimberPlugin.MovementSpeed.Value = GUILayout.HorizontalSlider(Casual_ClimberPlugin.MovementSpeed.Value, 25f, 50f, []);
-                            GUILayout.Space(6);
+                        GUILayout.Space(6);
                         // climb speed slider
                         GUILayout.Label(string.Format($"Climb Speed {Casual_ClimberPlugin.climbSpeedMod}"), guiStyleSmall , []);
                         Casual_ClimberPlugin.ClimbSpeedMod.Value = GUILayout.HorizontalSlider(Casual_ClimberPlugin.ClimbSpeedMod.Value, 1f, 2f, []);
-                            GUILayout.Space(10);
+                        GUILayout.Space(8);
                         // stamina toggle
                         Casual_ClimberPlugin.StaminaModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.staminaModifier, $"Enable Stamina Modifier {Casual_ClimberPlugin.StaminaModifier.Value}");
-                            GUILayout.Space(7);
+                        GUILayout.Space(8);
                         // hunger toggle
                         Casual_ClimberPlugin.HungerModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.hungerModifier, $"Disable Hunger {Casual_ClimberPlugin.HungerModifier.Value}");
-                            GUILayout.Space(7);
+                        GUILayout.Space(8);
                         // poison toggle
                         Casual_ClimberPlugin.PoisonModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.poisonModifier, $"Disable Poison {Casual_ClimberPlugin.PoisonModifier.Value}");
-                        GUILayout.Space(7);
+                        GUILayout.Space(8);
                         // heat toggle
                         Casual_ClimberPlugin.HeatModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.heatModifier, $"Disable Heat {Casual_ClimberPlugin.HeatModifier.Value}");
-                            GUILayout.Space(7);
+                        GUILayout.Space(8);
                         // cold toggle
                         Casual_ClimberPlugin.ColdModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.coldModifier, $"Disable Cold {Casual_ClimberPlugin.ColdModifier.Value}");
-                            GUILayout.Space(7);
+                        GUILayout.Space(8);
                         // drowsy toggle
                         Casual_ClimberPlugin.DrowsyModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.drowsyModifier, $"Disable Drowsy {Casual_ClimberPlugin.DrowsyModifier.Value}");
-                            GUILayout.Space(7);
+                        GUILayout.Space(8);
                         // curse toggle
                         Casual_ClimberPlugin.CurseModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.curseModifier, $"Disable Curse {Casual_ClimberPlugin.CurseModifier.Value}");
-                            GUILayout.Space(7);
+                        GUILayout.Space(8);
+                        // spores toggle
+                        Casual_ClimberPlugin.SporesModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.sporesModifier, $"Disable Spores {Casual_ClimberPlugin.SporesModifier.Value}");
+                        GUILayout.Space(8);
+                        // thorns toggle
+                        Casual_ClimberPlugin.ThornsModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.thornsModifier, $"Disable Thorns {Casual_ClimberPlugin.ThornsModifier.Value}");
+                        GUILayout.Space(7);
+                        // crab toggle
+                        Casual_ClimberPlugin.CrabModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.crabModifier, $"Disable Crab {Casual_ClimberPlugin.CrabModifier.Value}");
+                        GUILayout.Space(8);
+                        // web toggle
+                        Casual_ClimberPlugin.WebModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.webModifier, $"Disable Web {Casual_ClimberPlugin.WebModifier.Value}");
+                        GUILayout.Space(8);
+                        // weight toggle
+                        Casual_ClimberPlugin.WeightModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.weightModifier, $"Disable Weight {Casual_ClimberPlugin.WeightModifier.Value}");
+                        GUILayout.Space(8);
                         // injury toggle
                         Casual_ClimberPlugin.InjuryModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.injuryModifier, $"Disable Injury {Casual_ClimberPlugin.InjuryModifier.Value}");
-                            GUILayout.Space(7); 
+                        GUILayout.Space(7); 
 
                         GUILayout.EndArea();
                         GUILayout.EndArea();
-
                     }
                 }
             }

@@ -58,37 +58,52 @@ namespace Casual_Climber.Patches
         [HarmonyPostfix]
         public static void Awake_Postfix()
         {
-            bool keyFlag4 = Input.GetKeyDown(KeyCode.Alpha4);
-            bool keyFlag5 = Input.GetKeyDown(KeyCode.Alpha5);
-            bool keyFlag6 = Input.GetKeyDown(KeyCode.Alpha6);
-            bool keyFlag7 = Input.GetKeyDown(KeyCode.Alpha7);
-            //bool keyFlag8 = Input.GetKeyDown(KeyCode.Alpha8);
-            //bool keyFlag9 = Input.GetKeyDown(KeyCode.Alpha9);
-            //bool keyFlag0 = Input.GetKeyDown(KeyCode.Alpha0);
+            bool keyFlag0 = Input.GetKeyDown(KeyCode.Keypad0);
+            bool keyFlag1 = Input.GetKeyDown(KeyCode.Keypad1);
+            bool keyFlag2 = Input.GetKeyDown(KeyCode.Keypad2);
+            bool keyFlag3 = Input.GetKeyDown(KeyCode.Keypad3);
+            bool keyFlag4 = Input.GetKeyDown(KeyCode.Keypad4);
+            bool keyFlag5 = Input.GetKeyDown(KeyCode.Keypad5);
+            bool keyFlag6 = Input.GetKeyDown(KeyCode.Keypad6);
+            bool keyFlag7 = Input.GetKeyDown(KeyCode.Keypad7);
+            bool keyFlag8 = Input.GetKeyDown(KeyCode.Keypad8);
+            bool keyFlag9 = Input.GetKeyDown(KeyCode.Keypad9);
+            bool keyFlag10 = Input.GetKeyDown(KeyCode.KeypadDivide);
+            bool keyFlag11 = Input.GetKeyDown(KeyCode.KeypadMultiply);
+            bool keyFlag12 = Input.GetKeyDown(KeyCode.KeypadPeriod);
 
+            if (keyFlag0)
+            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Hunger, 0.2f); }
+            if (keyFlag1)
+            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Poison, 0.2f); }
+            if (keyFlag2)
+            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Hot, 0.2f); }
+            if (keyFlag3)
+            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Cold, 0.2f); }
             if (keyFlag4)
-            //{ Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Injury, 0.2f); }
-            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, 0.2f); }
-
+            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Drowsy, 0.2f); }
             if (keyFlag5)
-            //{ Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Hunger, 0.2f); }
-            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, 0f); }
-
+            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Curse, 0.2f); }
             if (keyFlag6)
-            //{ Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Poison, 0.2f); }
-            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Web, 0.2f); }
-
+            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Spores, 0.2f); }
             if (keyFlag7)
-            //{ Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Hot, 0.2f); }
-            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Web, 0f); }
-
-            //if (keyFlag8)
-            //{ Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Cold, 0.2f); }
-            //if (keyFlag9)
-            //{ Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Drowsy, 0.2f); }
-            //if (keyFlag0)
-            //{ Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Curse, 0.2f); }
-            //{ Character.localCharacter.refs.afflictions.ClearAllStatus(false); }
+            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Thorns, 0.2f); }
+            if (keyFlag8)
+            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Crab, 0.2f); }
+            if (keyFlag9)
+            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Web, 0.2f); }
+            if (keyFlag10)
+            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, 0.2f); }
+            if (keyFlag11)
+            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Injury, 0.2f); }
+            if (keyFlag12)
+            {
+                { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Curse, 0f); }
+                { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Thorns, 0f); }
+                { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Crab, 0f); }
+                { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, 0f); }
+                { Character.localCharacter.refs.afflictions.ClearAllStatus(true); }
+            }
 
             hungerModifier = Casual_ClimberPlugin.hungerModifier;
             hungerModifierToggle = Casual_ClimberPlugin.hungerModifierToggle;
