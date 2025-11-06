@@ -1,13 +1,9 @@
 ﻿using BepInEx;
 using BepInEx.Configuration;
-
 using HarmonyLib;
 using System;
-
-
 using UnityEngine;
 using UnityEngine.InputSystem;
-
 
 namespace Casual_Climber.Patches
 {
@@ -41,14 +37,8 @@ namespace Casual_Climber.Patches
         }
     }
 
-
-
-
-
     public class GUI_UI : MonoBehaviour
     {
-
-
         public static GUI_UI? Instance;
         public static bool ui_Active = GUI_Patches.uiActive;
         public bool isValuesVisible = false;
@@ -116,7 +106,6 @@ namespace Casual_Climber.Patches
         public static bool injuryModifierString_DefaultValue;
         public static bool injuryModifierString_DisplayValue;
 
-
         public void DisplayValues(bool ui_Active)
         {
             if (ui_Active)
@@ -127,7 +116,6 @@ namespace Casual_Climber.Patches
             {
                 casualClimber_ActivationStatus = casualClimber_DeactivatedString;
             }
-
             mod_ActiveStatus = ui_Active ? "Enabled" : "Disabled";
             isValuesVisible = true;
             lastTimeChange = Time.time;
@@ -154,9 +142,6 @@ namespace Casual_Climber.Patches
 
         public void OnGUI()
         {
-
-
-
             if (mod_ActiveStatus == "Enabled")
             { colorDisplayed = Color.green; }
             else
@@ -292,19 +277,15 @@ namespace Casual_Climber.Patches
 
                     if (isConfigVisible)
                     {
-
                         //Cursor.lockState = CursorLockMode.None;
                         //Cursor.visible = true;
-                        //Cursor.SetCursor(null, Vector2.zero, CursorMode.ForceSoftware);
-
-
 
                         GUILayout.BeginArea(new Rect(460, 30f, 400, 540f), GUI.skin.box);
                         GUILayout.BeginArea(new Rect(6f, 6f, 388f, 528f), GUI.skin.button);
 
                         GUILayout.Label(string.Format($"Casual Climber Cofiguration"), guiStyleBig, Array.Empty<GUILayoutOption>());
 
-                        bool closeButton = GUI.Button(new Rect(320f, 8f, 24f, 24f), "X");
+                        bool closeButton = GUI.Button(new Rect(360f, 8f, 24f, 24f), "X");
                         if (closeButton)
                         {
                             isConfigVisible = false;
