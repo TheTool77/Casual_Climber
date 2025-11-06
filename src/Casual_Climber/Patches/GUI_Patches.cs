@@ -1,17 +1,13 @@
-﻿using BepInEx.Configuration;
-using DG.Tweening.Core.Easing;
+﻿using BepInEx;
+using BepInEx.Configuration;
+
 using HarmonyLib;
 using System;
-using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
+
+
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
-using static InputSpriteData;
-using static MonoMod.Cil.RuntimeILReferenceBag.FastDelegateInvokers;
-using static UnityEngine.Rendering.DebugUI;
-using static Zorro.ControllerSupport.Rumble.RumbleClip;
+
 
 namespace Casual_Climber.Patches
 {
@@ -24,7 +20,7 @@ namespace Casual_Climber.Patches
 
         [HarmonyPatch(typeof(GUIManager), nameof(GUIManager.LateUpdate))]
         [HarmonyPostfix]
-        public static void Postfix(GUIManager __instance)
+        static void Postfix(GUIManager __instance)
         {
             displayUIFlag = Casual_ClimberPlugin.displayUIFlag;
             displayUIConfigFlag = Casual_ClimberPlugin.displayUIConfigFlag;
@@ -47,8 +43,12 @@ namespace Casual_Climber.Patches
 
 
 
+
+
     public class GUI_UI : MonoBehaviour
     {
+
+
         public static GUI_UI? Instance;
         public static bool ui_Active = GUI_Patches.uiActive;
         public bool isValuesVisible = false;
@@ -148,22 +148,6 @@ namespace Casual_Climber.Patches
                 isConfigVisible = true;
                 lastTimeChange = Time.time;
             }
-        }
-
-
-
-        [HarmonyPatch(typeof(MenuWindow), nameof(GUIManager.LateUpdate))]
-        [HarmonyPostfix]
-        public static void Postfix(MenuWindow __instance)
-        {
-            __instance.inputActive = true;
-
-
-
-            Debug.Log("[Casual_Climber] !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ");
-
-            //return __instance.inputActive;
-
         }
 
 
@@ -308,20 +292,6 @@ namespace Casual_Climber.Patches
 
                     if (isConfigVisible)
                     {
-
-       
-                        //[HarmonyPatch(typeof(MenuWindow), nameof(GUIManager.LateUpdate))]
-                        //[HarmonyPrefix]
-                        //static bool Prefix(MenuWindow __instance)
-                        //{
-                        //    __instance.inputActive = true;
-
-
-
-                        //    Debug.Log("[Casual_Climber] !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ");
-
-                        //}
-       
 
                         //Cursor.lockState = CursorLockMode.None;
                         //Cursor.visible = true;
