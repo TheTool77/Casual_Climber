@@ -118,7 +118,6 @@ namespace Casual_Climber.Patches
             lastTimeChange = Time.time;
         }
 
-
         public void DisplayConfig()
         {
             if (isConfigVisible)
@@ -134,7 +133,6 @@ namespace Casual_Climber.Patches
                 lastTimeChange = Time.time;
             }
         }
-
 
 
         public void OnGUI()

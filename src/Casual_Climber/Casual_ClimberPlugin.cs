@@ -7,7 +7,6 @@ using UnityEngine;
 
 namespace Casual_Climber
 {
-
     [BepInPlugin(MyGUID, PluginName, VersionString)]
     public class Casual_ClimberPlugin : BaseUnityPlugin
     {

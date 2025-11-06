@@ -13,7 +13,6 @@ namespace Casual_Climber.Patches
             {
                 __instance.windowShowingCursor = true;
                 __instance.windowBlockingInput = true;
-                //Debug.Log($"[Casual_Climber]  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ");
             }
         }
     }
