@@ -14,6 +14,11 @@ namespace Casual_Climber.Patches
                 __instance.windowShowingCursor = true;
                 __instance.windowBlockingInput = true;
             }
+            else
+            {
+                __instance.windowShowingCursor = false;
+                __instance.windowBlockingInput = false;
+            }
         }
     }
 }
