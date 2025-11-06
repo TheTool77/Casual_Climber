@@ -1,9 +1,6 @@
-﻿using BepInEx;
-using BepInEx.Configuration;
-using HarmonyLib;
+﻿using HarmonyLib;
 using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Casual_Climber.Patches
 {
