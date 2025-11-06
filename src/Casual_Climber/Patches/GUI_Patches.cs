@@ -290,44 +290,44 @@ namespace Casual_Climber.Patches
 
                         GUILayout.Space(10);
 
-                                // jump slider
-                                GUILayout.Label(string.Format($"Jump Height {Casual_ClimberPlugin.jumpGravity}"), guiStyleSmall, []);
-                                Casual_ClimberPlugin.JumpHeight.Value = GUILayout.HorizontalSlider(Casual_ClimberPlugin.JumpHeight.Value, 15f, 60f, []);
-                                    GUILayout.Space(6);
-                                // move speed slider
-                                GUILayout.Label(string.Format($"Movement Speed {Casual_ClimberPlugin.movementForce}"), guiStyleSmall, []);
-                                Casual_ClimberPlugin.MovementSpeed.Value = GUILayout.HorizontalSlider(Casual_ClimberPlugin.MovementSpeed.Value, 25f, 50f, []);
-                                    GUILayout.Space(6);
-                                // climb speed slider
-                                GUILayout.Label(string.Format($"Climb Speed {Casual_ClimberPlugin.climbSpeedMod}"), guiStyleSmall , []);
-                                Casual_ClimberPlugin.ClimbSpeedMod.Value = GUILayout.HorizontalSlider(Casual_ClimberPlugin.ClimbSpeedMod.Value, 1f, 2f, []);
-                                    GUILayout.Space(10);
-                                // stamina toggle
-                                Casual_ClimberPlugin.StaminaModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.staminaModifier, $"Enable Stamina Modifier {Casual_ClimberPlugin.StaminaModifier.Value}");
-                                    GUILayout.Space(7);
-                                // hunger toggle
-                                Casual_ClimberPlugin.HungerModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.hungerModifier, $"Disable Hunger {Casual_ClimberPlugin.HungerModifier.Value}");
-                                    GUILayout.Space(7);
-                                // poison toggle
-                                Casual_ClimberPlugin.PoisonModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.poisonModifier, $"Disable Poison {Casual_ClimberPlugin.PoisonModifier.Value}");
-                                GUILayout.Space(7);
-                                // heat toggle
-                                Casual_ClimberPlugin.HeatModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.heatModifier, $"Disable Heat {Casual_ClimberPlugin.HeatModifier.Value}");
-                                    GUILayout.Space(7);
-                                // cold toggle
-                                Casual_ClimberPlugin.ColdModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.coldModifier, $"Disable Cold {Casual_ClimberPlugin.ColdModifier.Value}");
-                                    GUILayout.Space(7);
-                                // drowsy toggle
-                                Casual_ClimberPlugin.DrowsyModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.drowsyModifier, $"Disable Drowsy {Casual_ClimberPlugin.DrowsyModifier.Value}");
-                                    GUILayout.Space(7);
-                                // curse toggle
-                                Casual_ClimberPlugin.CurseModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.curseModifier, $"Disable Curse {Casual_ClimberPlugin.CurseModifier.Value}");
-                                    GUILayout.Space(7);
-                                // injury toggle
-                                Casual_ClimberPlugin.InjuryModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.injuryModifier, $"Disable Injury {Casual_ClimberPlugin.InjuryModifier.Value}");
-                                    GUILayout.Space(7); 
+                        // jump slider
+                        GUILayout.Label(string.Format($"Jump Height {Casual_ClimberPlugin.jumpGravity}"), guiStyleSmall, []);
+                        Casual_ClimberPlugin.JumpHeight.Value = GUILayout.HorizontalSlider(Casual_ClimberPlugin.JumpHeight.Value, 15f, 60f, []);
+                            GUILayout.Space(6);
+                        // move speed slider
+                        GUILayout.Label(string.Format($"Movement Speed {Casual_ClimberPlugin.movementForce}"), guiStyleSmall, []);
+                        Casual_ClimberPlugin.MovementSpeed.Value = GUILayout.HorizontalSlider(Casual_ClimberPlugin.MovementSpeed.Value, 25f, 50f, []);
+                            GUILayout.Space(6);
+                        // climb speed slider
+                        GUILayout.Label(string.Format($"Climb Speed {Casual_ClimberPlugin.climbSpeedMod}"), guiStyleSmall , []);
+                        Casual_ClimberPlugin.ClimbSpeedMod.Value = GUILayout.HorizontalSlider(Casual_ClimberPlugin.ClimbSpeedMod.Value, 1f, 2f, []);
+                            GUILayout.Space(10);
+                        // stamina toggle
+                        Casual_ClimberPlugin.StaminaModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.staminaModifier, $"Enable Stamina Modifier {Casual_ClimberPlugin.StaminaModifier.Value}");
+                            GUILayout.Space(7);
+                        // hunger toggle
+                        Casual_ClimberPlugin.HungerModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.hungerModifier, $"Disable Hunger {Casual_ClimberPlugin.HungerModifier.Value}");
+                            GUILayout.Space(7);
+                        // poison toggle
+                        Casual_ClimberPlugin.PoisonModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.poisonModifier, $"Disable Poison {Casual_ClimberPlugin.PoisonModifier.Value}");
+                        GUILayout.Space(7);
+                        // heat toggle
+                        Casual_ClimberPlugin.HeatModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.heatModifier, $"Disable Heat {Casual_ClimberPlugin.HeatModifier.Value}");
+                            GUILayout.Space(7);
+                        // cold toggle
+                        Casual_ClimberPlugin.ColdModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.coldModifier, $"Disable Cold {Casual_ClimberPlugin.ColdModifier.Value}");
+                            GUILayout.Space(7);
+                        // drowsy toggle
+                        Casual_ClimberPlugin.DrowsyModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.drowsyModifier, $"Disable Drowsy {Casual_ClimberPlugin.DrowsyModifier.Value}");
+                            GUILayout.Space(7);
+                        // curse toggle
+                        Casual_ClimberPlugin.CurseModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.curseModifier, $"Disable Curse {Casual_ClimberPlugin.CurseModifier.Value}");
+                            GUILayout.Space(7);
+                        // injury toggle
+                        Casual_ClimberPlugin.InjuryModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.injuryModifier, $"Disable Injury {Casual_ClimberPlugin.InjuryModifier.Value}");
+                            GUILayout.Space(7); 
 
-                            GUILayout.EndArea();
+                        GUILayout.EndArea();
                         GUILayout.EndArea();
 
                     }

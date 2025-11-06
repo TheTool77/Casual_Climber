@@ -81,11 +81,16 @@ namespace Casual_Climber
         public static string ColdModifierKey = "08. Disable Cold";
         public static string DrowsyModifierKey = "09. Disable Drowsiness";
         public static string CurseModifierKey = "10. Disable Curse";
-        public static string InjuryModifierKey = "11. Disable Injury";
-        public static string KeyboardKey_1Key = "12. Enable/Disable PEAK-ToolsTools Key";
-        public static string KeyboardKey_1_AltKey = "13. Enable/Disable PEAK-ToolsTools Alt Key";
-        public static string KeyboardKey_2Key = "14. PEAK-ToolsTools Configuration Key";
-        public static string KeyboardKey_2_AltKey = "15. PEAK-ToolsTools Configuration Alt Key";
+        public static string SporesModifierKey = "11. Disable Spores";
+        public static string ThornsModifierKey = "12. Disable Thorns";
+        public static string CrabModifierKey = "13. Disable Crab";
+        public static string WebModifierKey = "14. Disable Web";
+        public static string WeightModifierKey = "15. Disable Weight";
+        public static string InjuryModifierKey = "16. Disable Injury";
+        public static string KeyboardKey_1Key = "17. Enable/Disable PEAK-ToolsTools Key";
+        public static string KeyboardKey_1_AltKey = "18. Enable/Disable PEAK-ToolsTools Alt Key";
+        public static string KeyboardKey_2Key = "19. PEAK-ToolsTools Configuration Key";
+        public static string KeyboardKey_2_AltKey = "20. PEAK-ToolsTools Configuration Alt Key";
 
         // Configuration entries
         public static ConfigEntry<float>? JumpHeight;
@@ -98,6 +103,14 @@ namespace Casual_Climber
         public static ConfigEntry<bool>? ColdModifier;
         public static ConfigEntry<bool>? DrowsyModifier;
         public static ConfigEntry<bool>? CurseModifier;
+
+        public static ConfigEntry<bool>? SporesModifier;
+        public static ConfigEntry<bool>? ThornsModifier;
+        public static ConfigEntry<bool>? CrabModifier;
+        public static ConfigEntry<bool>? WebModifier;
+        public static ConfigEntry<bool>? WeightModifier;
+
+
         public static ConfigEntry<bool>? InjuryModifier;
         public static ConfigEntry<KeyboardShortcut>? KeyboardKey_1;
         public static ConfigEntry<KeyboardShortcut>? KeyboardKey_1_Alt;
@@ -127,6 +140,16 @@ namespace Casual_Climber
         public static bool drowsyModifierToggle;
         public static bool curseModifier;
         public static bool curseModifierToggle;
+        public static bool sporesModifier;
+        public static bool sporesModifierToggle;
+        public static bool thornsModifier;
+        public static bool thornsModifierToggle;
+        public static bool crabModifier;
+        public static bool crabModifierToggle;
+        public static bool webModifier;
+        public static bool webModifierToggle;
+        public static bool weightModifier;
+        public static bool weightModifierToggle;
         public static bool injuryModifier;
         public static bool injuryModifierToggle;
 
@@ -146,6 +169,11 @@ namespace Casual_Climber
             coldModifierToggle = false;
             drowsyModifierToggle = false;
             curseModifierToggle = false;
+            sporesModifierToggle = false;
+            thornsModifierToggle = false;
+            crabModifierToggle = false;
+            webModifierToggle = false;
+            weightModifierToggle = false;
             injuryModifierToggle = false;
 
             // Create GUI Object instance
@@ -232,6 +260,46 @@ namespace Casual_Climber
                 new ConfigDescription("Disable Curse.",
                 new AcceptableValueList<bool>(false, true)));
 
+            // Spores
+            SporesModifier = Config.Bind(
+                "General",
+                SporesModifierKey,
+                true,
+                new ConfigDescription("Disable Spores.",
+                new AcceptableValueList<bool>(false, true)));
+
+            // Thorns
+            ThornsModifier = Config.Bind(
+                "General",
+                ThornsModifierKey,
+                true,
+                new ConfigDescription("Disable Thorns.",
+                new AcceptableValueList<bool>(false, true)));
+
+            // Crab
+            CrabModifier = Config.Bind(
+                "General",
+                CrabModifierKey,
+                true,
+                new ConfigDescription("Disable Crab.",
+                new AcceptableValueList<bool>(false, true)));
+
+            // Web
+            WebModifier = Config.Bind(
+                "General",
+                WebModifierKey,
+                true,
+                new ConfigDescription("Disable Web.",
+                new AcceptableValueList<bool>(false, true)));
+
+            // Weight
+            WeightModifier = Config.Bind(
+                "General",
+                WeightModifierKey,
+                true,
+                new ConfigDescription("Disable Weight.",
+                new AcceptableValueList<bool>(false, true)));
+
             // Injury
             InjuryModifier = Config.Bind(
                 "General",
@@ -239,8 +307,6 @@ namespace Casual_Climber
                 true,
                 new ConfigDescription("Disable Injury.",
                 new AcceptableValueList<bool>(false, true)));
-
-
 
             // Keyboard Key Mod Activation 
             KeyboardKey_1 = Config.Bind
@@ -286,6 +352,11 @@ namespace Casual_Climber
             ColdModifier.SettingChanged += ConfigSettingChanged;
             DrowsyModifier.SettingChanged += ConfigSettingChanged;
             CurseModifier.SettingChanged += ConfigSettingChanged;
+            SporesModifier.SettingChanged += ConfigSettingChanged;
+            ThornsModifier.SettingChanged += ConfigSettingChanged;
+            CrabModifier.SettingChanged += ConfigSettingChanged;
+            WebModifier.SettingChanged += ConfigSettingChanged;
+            WeightModifier.SettingChanged += ConfigSettingChanged;
             InjuryModifier.SettingChanged += ConfigSettingChanged;
             KeyboardKey_1.SettingChanged += ConfigSettingChanged;
             KeyboardKey_2.SettingChanged += ConfigSettingChanged;
@@ -300,6 +371,11 @@ namespace Casual_Climber
             coldModifier = ColdModifier.Value;
             drowsyModifier = DrowsyModifier.Value;
             curseModifier = CurseModifier.Value;
+            sporesModifier = SporesModifier.Value;
+            thornsModifier = ThornsModifier.Value;
+            crabModifier = CrabModifier.Value;
+            webModifier = WebModifier.Value;
+            weightModifier = WeightModifier.Value;
             injuryModifier = InjuryModifier.Value;
 
 
@@ -326,6 +402,14 @@ namespace Casual_Climber
             coldModifierString_Value = coldModifier;
             drowsyModifierString_Value = drowsyModifier;
             curseModifierString_Value = curseModifier;
+
+            sporesModifierString_Value = sporesModifier;
+            thornsModifierString_Value = thornsModifier;
+            crabModifierString_Value = crabModifier;
+            webModifierString_Value = webModifier;
+            weightModifierString_Value = weightModifier;
+
+
             injuryModifierString_Value = injuryModifier;
 
             //Display Config GUI
@@ -492,6 +576,66 @@ namespace Casual_Climber
                 Log.LogInfo($"curseModifier Value: {CharacterAfflictionsPatches.curseModifier_Default}: Default");
             }
 
+            // sporesModifierToggle
+            if (sporesModifierToggle == false)
+            {
+                sporesModifierToggle = true;
+                Log.LogInfo($"sporesModifier Value: {CharacterAfflictionsPatches.sporesModifier}");
+            }
+            else
+            {
+                sporesModifierToggle = false;
+                Log.LogInfo($"sporesModifier Value: {CharacterAfflictionsPatches.sporesModifier_Default}: Default");
+            }
+
+            // thornsModifierToggle
+            if (thornsModifierToggle == false)
+            {
+                thornsModifierToggle = true;
+                Log.LogInfo($"thornsModifier Value: {CharacterAfflictionsPatches.thornsModifier}");
+            }
+            else
+            {
+                thornsModifierToggle = false;
+                Log.LogInfo($"thornsModifier Value: {CharacterAfflictionsPatches.thornsModifier_Default}: Default");
+            }
+
+            // crabModifierToggle
+            if (crabModifierToggle == false)
+            {
+                crabModifierToggle = true;
+                Log.LogInfo($"crabModifier Value: {CharacterAfflictionsPatches.crabModifier}");
+            }
+            else
+            {
+                crabModifierToggle = false;
+                Log.LogInfo($"crabModifier Value: {CharacterAfflictionsPatches.crabModifier_Default}: Default");
+            }
+
+            // webModifierToggle
+            if (webModifierToggle == false)
+            {
+                webModifierToggle = true;
+                Log.LogInfo($"webModifier Value: {CharacterAfflictionsPatches.webModifier}");
+            }
+            else
+            {
+                webModifierToggle = false;
+                Log.LogInfo($"webModifier Value: {CharacterAfflictionsPatches.webModifier_Default}: Default");
+            }
+
+            // weightModifierToggle
+            if (weightModifierToggle == false)
+            {
+                weightModifierToggle = true;
+                Log.LogInfo($"weightModifier Value: {CharacterAfflictionsPatches.weightModifier}");
+            }
+            else
+            {
+                weightModifierToggle = false;
+                Log.LogInfo($"weightModifier Value: {CharacterAfflictionsPatches.weightModifier_Default}: Default");
+            }
+
             // injuryModifierToggle
             if (injuryModifierToggle == false)
             {
@@ -514,6 +658,11 @@ namespace Casual_Climber
             Log.LogInfo($"coldModifierToggle Status: {coldModifierToggle}");
             Log.LogInfo($"drowsyModifierToggle Status: {drowsyModifierToggle}");
             Log.LogInfo($"curseModifierToggle Status: {curseModifierToggle}");
+            Log.LogInfo($"sporesModifierToggle Status: {sporesModifierToggle}");
+            Log.LogInfo($"thornsModifierToggle Status: {thornsModifierToggle}");
+            Log.LogInfo($"crabModifierToggle Status: {crabModifierToggle}");
+            Log.LogInfo($"webModifierToggle Status: {webModifierToggle}");
+            Log.LogInfo($"weightModifierToggle Status: {weightModifierToggle}");
             Log.LogInfo($"injuryModifierToggle Status: {injuryModifierToggle}");
 
         }            
@@ -624,6 +773,56 @@ namespace Casual_Climber
                 {
                     curseModifier = CurseModifier.Value;
                     Casual_ClimberPlugin.Log.LogInfo($"curseModifier Value: {curseModifier}");
+                }
+            }
+
+            // SporesModifierKey ChangedSetting
+            if (settingChangedEventArgs.ChangedSetting.Definition.Key == SporesModifierKey)
+            {
+                if (SporesModifier != null)
+                {
+                    sporesModifier = SporesModifier.Value;
+                    Casual_ClimberPlugin.Log.LogInfo($"sporesModifier Value: {sporesModifier}");
+                }
+            }
+
+            // ThornsModifierKey ChangedSetting
+            if (settingChangedEventArgs.ChangedSetting.Definition.Key == ThornsModifierKey)
+            {
+                if (ThornsModifier != null)
+                {
+                    thornsModifier = ThornsModifier.Value;
+                    Casual_ClimberPlugin.Log.LogInfo($"thornsModifier Value: {thornsModifier}");
+                }
+            }
+
+            // CrabModifierKey ChangedSetting
+            if (settingChangedEventArgs.ChangedSetting.Definition.Key == CrabModifierKey)
+            {
+                if (CrabModifier != null)
+                {
+                    crabModifier = CrabModifier.Value;
+                    Casual_ClimberPlugin.Log.LogInfo($"crabModifier Value: {crabModifier}");
+                }
+            }
+
+            // WebModifierKey ChangedSetting
+            if (settingChangedEventArgs.ChangedSetting.Definition.Key == WebModifierKey)
+            {
+                if (WebModifier != null)
+                {
+                    webModifier = WebModifier.Value;
+                    Casual_ClimberPlugin.Log.LogInfo($"webModifier Value: {webModifier}");
+                }
+            }
+
+            // WeightModifierKey ChangedSetting
+            if (settingChangedEventArgs.ChangedSetting.Definition.Key == WeightModifierKey)
+            {
+                if (WeightModifier != null)
+                {
+                    weightModifier = WeightModifier.Value;
+                    Casual_ClimberPlugin.Log.LogInfo($"weightModifier Value: {weightModifier}");
                 }
             }
 

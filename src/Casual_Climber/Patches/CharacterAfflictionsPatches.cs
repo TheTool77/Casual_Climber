@@ -30,6 +30,26 @@ namespace Casual_Climber.Patches
         public static bool curseModifier;
         public static bool curseModifierToggle;
 
+        public static bool sporesModifier_Default = false;
+        public static bool sporesModifier;
+        public static bool sporesModifierToggle;
+
+        public static bool thornsModifier_Default = false;
+        public static bool thornsModifier;
+        public static bool thornsModifierToggle;
+
+        public static bool crabModifier_Default = false;
+        public static bool crabModifier;
+        public static bool crabModifierToggle;
+
+        public static bool webModifier_Default = false;
+        public static bool webModifier;
+        public static bool webModifierToggle;
+
+        public static bool weightModifier_Default = false;
+        public static bool weightModifier;
+        public static bool weightModifierToggle;
+
         public static bool injuryModifier_Default = false;
         public static bool injuryModifier;
         public static bool injuryModifierToggle;
@@ -82,6 +102,16 @@ namespace Casual_Climber.Patches
             drowsyModifierToggle = Casual_ClimberPlugin.drowsyModifierToggle;
             curseModifier = Casual_ClimberPlugin.curseModifier;
             curseModifierToggle = Casual_ClimberPlugin.curseModifierToggle;
+            sporesModifier = Casual_ClimberPlugin.sporesModifier;
+            sporesModifierToggle = Casual_ClimberPlugin.sporesModifierToggle;
+            thornsModifier = Casual_ClimberPlugin.thornsModifier;
+            thornsModifierToggle = Casual_ClimberPlugin.thornsModifierToggle;
+            crabModifier = Casual_ClimberPlugin.crabModifier;
+            crabModifierToggle = Casual_ClimberPlugin.crabModifierToggle;
+            webModifier = Casual_ClimberPlugin.webModifier;
+            webModifierToggle = Casual_ClimberPlugin.webModifierToggle;
+            weightModifier = Casual_ClimberPlugin.weightModifier;
+            weightModifierToggle = Casual_ClimberPlugin.weightModifierToggle;
             injuryModifier = Casual_ClimberPlugin.injuryModifier;
             injuryModifierToggle = Casual_ClimberPlugin.injuryModifierToggle;
 
@@ -102,6 +132,21 @@ namespace Casual_Climber.Patches
 
             if (curseModifier && curseModifierToggle)
             { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Curse, 0f); }
+
+            if (sporesModifier && sporesModifierToggle)
+            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Spores, 0f); }
+
+            if (thornsModifier && thornsModifierToggle)
+            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Thorns, 0f); }
+
+            if (crabModifier && crabModifierToggle)
+            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Crab, 0f); }
+
+            if (webModifier && webModifierToggle)
+            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Web, 0f); }
+
+            if (weightModifier && weightModifierToggle)
+            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, 0f); }
 
             if (injuryModifier && injuryModifierToggle)
             { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Injury, 0f); }
