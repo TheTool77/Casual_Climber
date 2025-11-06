@@ -63,6 +63,26 @@ namespace Casual_Climber
         public static bool curseModifierString_Value = curseModifier;
         public static bool curseModifierString_DefaultValue = CharacterAfflictionsPatches.curseModifier_Default;
 
+        public static string sporesModifierString = "Spores Disabled: ";
+        public static bool sporesModifierString_Value = sporesModifier;
+        public static bool sporesModifierString_DefaultValue = CharacterAfflictionsPatches.sporesModifier_Default;
+
+        public static string thornsModifierString = "Thorns Disabled: ";
+        public static bool thornsModifierString_Value = thornsModifier;
+        public static bool thornsModifierString_DefaultValue = CharacterAfflictionsPatches.thornsModifier_Default;
+
+        public static string crabModifierString = "Crab Disabled: ";
+        public static bool crabModifierString_Value = crabModifier;
+        public static bool crabModifierString_DefaultValue = CharacterAfflictionsPatches.crabModifier_Default;
+
+        public static string webModifierString = "Web Disabled: ";
+        public static bool webModifierString_Value = webModifier;
+        public static bool webModifierString_DefaultValue = CharacterAfflictionsPatches.webModifier_Default;
+
+        public static string weightModifierString = "Weight Disabled: ";
+        public static bool weightModifierString_Value = weightModifier;
+        public static bool weightModifierString_DefaultValue = CharacterAfflictionsPatches.weightModifier_Default;
+
         public static string injuryModifierString = "Injury Disabled: ";
         public static bool injuryModifierString_Value = injuryModifier;
         public static bool injuryModifierString_DefaultValue = CharacterAfflictionsPatches.injuryModifier_Default;
