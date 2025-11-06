@@ -1,5 +1,5 @@
 ﻿using HarmonyLib;
-//using UnityEngine;
+using UnityEngine;
 
 namespace Casual_Climber.Patches
 {
@@ -38,23 +38,30 @@ namespace Casual_Climber.Patches
         [HarmonyPostfix]
         public static void Awake_Postfix()
         {
-            //bool keyFlag4 = Input.GetKeyDown(KeyCode.Alpha4);
-            //bool keyFlag5 = Input.GetKeyDown(KeyCode.Alpha5);
-            //bool keyFlag6 = Input.GetKeyDown(KeyCode.Alpha6);
-            //bool keyFlag7 = Input.GetKeyDown(KeyCode.Alpha7);
+            bool keyFlag4 = Input.GetKeyDown(KeyCode.Alpha4);
+            bool keyFlag5 = Input.GetKeyDown(KeyCode.Alpha5);
+            bool keyFlag6 = Input.GetKeyDown(KeyCode.Alpha6);
+            bool keyFlag7 = Input.GetKeyDown(KeyCode.Alpha7);
             //bool keyFlag8 = Input.GetKeyDown(KeyCode.Alpha8);
             //bool keyFlag9 = Input.GetKeyDown(KeyCode.Alpha9);
             //bool keyFlag0 = Input.GetKeyDown(KeyCode.Alpha0);
 
-            //if (keyFlag4)
+            if (keyFlag4)
             //{ Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Injury, 0.2f); }
-            //if (keyFlag5)
-            //{ Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Injury, 0f); }
+            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, 0.2f); }
+
+            if (keyFlag5)
             //{ Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Hunger, 0.2f); }
-            //if (keyFlag6)
+            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, 0f); }
+
+            if (keyFlag6)
             //{ Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Poison, 0.2f); }
-            //if (keyFlag7)
+            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Web, 0.2f); }
+
+            if (keyFlag7)
             //{ Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Hot, 0.2f); }
+            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Web, 0f); }
+
             //if (keyFlag8)
             //{ Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Cold, 0.2f); }
             //if (keyFlag9)

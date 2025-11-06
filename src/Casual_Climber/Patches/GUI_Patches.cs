@@ -1,11 +1,17 @@
 ﻿using BepInEx.Configuration;
+using DG.Tweening.Core.Easing;
 using HarmonyLib;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using static InputSpriteData;
+using static MonoMod.Cil.RuntimeILReferenceBag.FastDelegateInvokers;
+using static UnityEngine.Rendering.DebugUI;
+using static Zorro.ControllerSupport.Rumble.RumbleClip;
 
 namespace Casual_Climber.Patches
 {
@@ -38,6 +44,8 @@ namespace Casual_Climber.Patches
             }
         }
     }
+
+
 
     public class GUI_UI : MonoBehaviour
     {
@@ -125,6 +133,7 @@ namespace Casual_Climber.Patches
             lastTimeChange = Time.time;
         }
 
+
         public void DisplayConfig()
         {
             if (isConfigVisible)
@@ -142,8 +151,28 @@ namespace Casual_Climber.Patches
         }
 
 
+
+        [HarmonyPatch(typeof(MenuWindow), nameof(GUIManager.LateUpdate))]
+        [HarmonyPostfix]
+        public static void Postfix(MenuWindow __instance)
+        {
+            __instance.inputActive = true;
+
+
+
+            Debug.Log("[Casual_Climber] !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ");
+
+            //return __instance.inputActive;
+
+        }
+
+
+
         public void OnGUI()
         {
+
+
+
             if (mod_ActiveStatus == "Enabled")
             { colorDisplayed = Color.green; }
             else
@@ -230,46 +259,80 @@ namespace Casual_Climber.Patches
                     GUI.backgroundColor = new Color(255f, 255f, 255f, 1.0f);
                     //GUI.backgroundColor = Color.grey;
 
-                    GUIStyle guistyle = new(GUI.skin.label)
+                    GUIStyle guiStyleBig = new(GUI.skin.label)
                     {
-                        fontSize = 18,
+                        fontSize = 22,
                         alignment = TextAnchor.UpperLeft,
                         fontStyle = FontStyle.Bold,
                         richText = true
                     };
 
-                    GUILayout.BeginArea(new Rect(30f, 30f, 360f, 440f), GUI.skin.box);
-                        GUILayout.BeginArea(new Rect(6f, 6f, 348, 428f), GUI.skin.box);
-                            GUILayout.Label("Casual Climber: " + mod_ActiveStatus, guistyle, []);
+                    GUIStyle guiStyleMed = new(GUI.skin.label)
+                    {
+                        fontSize = 18,
+                        alignment = TextAnchor.UpperLeft,
+                        //fontStyle = FontStyle.Bold,
+                        richText = true
+                    };
+
+                    GUIStyle guiStyleSmall = new(GUI.skin.label)
+                    {
+                        fontSize = 14,
+                        alignment = TextAnchor.UpperLeft,
+                        //fontStyle = FontStyle.Bold,
+                        richText = true
+                    };
+
+                    GUILayout.BeginArea(new Rect(30f, 30f, 400f, 540f), GUI.skin.box);
+                        GUILayout.BeginArea(new Rect(6f, 6f, 388, 528f), GUI.skin.box);
+                            GUILayout.Label("Casual Climber: " + mod_ActiveStatus, guiStyleBig, []);
                             GUI.color = colorDisplayed;
                             GUI.contentColor = colorDisplayed;
-                            GUILayout.Label($"{casualClimber_ActivationStatus}", guistyle, []);
+                            GUILayout.Label($"{casualClimber_ActivationStatus}", guiStyleBig, []);
                             GUILayout.Space(26);
                             GUI.color = Color.white;
                             GUI.contentColor = Color.white;
-                            GUILayout.Label(string.Format($"{jumpString} {jumpString_DisplayValue}"), guistyle, []);
-                            GUILayout.Label(string.Format($"{moveSpeedString} {moveSpeedString_DisplayValue}"), guistyle, []);
-                            GUILayout.Label(string.Format($"{climbSpeedString} {climbSpeedString_DisplayValue}"), guistyle, []);
-                            GUILayout.Label(string.Format($"{staminaModifierString} {staminaModifierString_DisplayValue}"), guistyle, []);
-                            GUILayout.Label(string.Format($"{hungerModifierString} {hungerModifierString_DisplayValue}"), guistyle, []);
-                            GUILayout.Label(string.Format($"{poisonModifierString} {poisonModifierString_DisplayValue}"), guistyle, []);
-                            GUILayout.Label(string.Format($"{heatModifierString} {heatModifierString_DisplayValue}"), guistyle, []);
-                            GUILayout.Label(string.Format($"{coldModifierString} {coldModifierString_DisplayValue}"), guistyle, []);
-                            GUILayout.Label(string.Format($"{drowsyModifierString} {drowsyModifierString_DisplayValue}"), guistyle, []);
-                            GUILayout.Label(string.Format($"{curseModifierString} {curseModifierString_DisplayValue}"), guistyle, []);
-                            GUILayout.Label(string.Format($"{injuryModifierString} {injuryModifierString_DisplayValue}"), guistyle, []);
+                            GUILayout.Label(string.Format($"{jumpString} {jumpString_DisplayValue}"), guiStyleMed, []);
+                            GUILayout.Label(string.Format($"{moveSpeedString} {moveSpeedString_DisplayValue}"), guiStyleMed, []);
+                            GUILayout.Label(string.Format($"{climbSpeedString} {climbSpeedString_DisplayValue}"), guiStyleMed, []);
+                            GUILayout.Label(string.Format($"{staminaModifierString} {staminaModifierString_DisplayValue}"), guiStyleMed, []);
+                            GUILayout.Label(string.Format($"{hungerModifierString} {hungerModifierString_DisplayValue}"), guiStyleMed, []);
+                            GUILayout.Label(string.Format($"{poisonModifierString} {poisonModifierString_DisplayValue}"), guiStyleMed, []);
+                            GUILayout.Label(string.Format($"{heatModifierString} {heatModifierString_DisplayValue}"), guiStyleMed, []);
+                            GUILayout.Label(string.Format($"{coldModifierString} {coldModifierString_DisplayValue}"), guiStyleMed, []);
+                            GUILayout.Label(string.Format($"{drowsyModifierString} {drowsyModifierString_DisplayValue}"), guiStyleMed, []);
+                            GUILayout.Label(string.Format($"{curseModifierString} {curseModifierString_DisplayValue}"), guiStyleMed, []);
+                            GUILayout.Label(string.Format($"{injuryModifierString} {injuryModifierString_DisplayValue}"), guiStyleMed, []);
                         GUILayout.EndArea();
                     GUILayout.EndArea();
 
                     if (isConfigVisible)
                     {
-                        Cursor.lockState = CursorLockMode.None;
-                        Cursor.visible = true;
 
-                        GUILayout.BeginArea(new Rect(400, 30f, 360f, 440f), GUI.skin.box);
-                        GUILayout.BeginArea(new Rect(6f, 6f, 348f, 428f), GUI.skin.button);
+       
+                        //[HarmonyPatch(typeof(MenuWindow), nameof(GUIManager.LateUpdate))]
+                        //[HarmonyPrefix]
+                        //static bool Prefix(MenuWindow __instance)
+                        //{
+                        //    __instance.inputActive = true;
 
-                        GUILayout.Label(string.Format($"Casual Climber Cofiguration"), guistyle, Array.Empty<GUILayoutOption>());
+
+
+                        //    Debug.Log("[Casual_Climber] !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ");
+
+                        //}
+       
+
+                        //Cursor.lockState = CursorLockMode.None;
+                        //Cursor.visible = true;
+                        //Cursor.SetCursor(null, Vector2.zero, CursorMode.ForceSoftware);
+
+
+
+                        GUILayout.BeginArea(new Rect(460, 30f, 400, 540f), GUI.skin.box);
+                        GUILayout.BeginArea(new Rect(6f, 6f, 388f, 528f), GUI.skin.button);
+
+                        GUILayout.Label(string.Format($"Casual Climber Cofiguration"), guiStyleBig, Array.Empty<GUILayoutOption>());
 
                         bool closeButton = GUI.Button(new Rect(320f, 8f, 24f, 24f), "X");
                         if (closeButton)
@@ -282,15 +345,15 @@ namespace Casual_Climber.Patches
                         GUILayout.Space(10);
 
                                 // jump slider
-                                GUILayout.Label(string.Format($"Jump Height {Casual_ClimberPlugin.jumpGravity}"), []);
+                                GUILayout.Label(string.Format($"Jump Height {Casual_ClimberPlugin.jumpGravity}"), guiStyleSmall, []);
                                 Casual_ClimberPlugin.JumpHeight.Value = GUILayout.HorizontalSlider(Casual_ClimberPlugin.JumpHeight.Value, 15f, 60f, []);
                                     GUILayout.Space(6);
                                 // move speed slider
-                                GUILayout.Label(string.Format($"Movement Speed {Casual_ClimberPlugin.movementForce}"), []);
+                                GUILayout.Label(string.Format($"Movement Speed {Casual_ClimberPlugin.movementForce}"), guiStyleSmall, []);
                                 Casual_ClimberPlugin.MovementSpeed.Value = GUILayout.HorizontalSlider(Casual_ClimberPlugin.MovementSpeed.Value, 25f, 50f, []);
                                     GUILayout.Space(6);
                                 // climb speed slider
-                                GUILayout.Label(string.Format($"Climb Speed {Casual_ClimberPlugin.climbSpeedMod}"), []);
+                                GUILayout.Label(string.Format($"Climb Speed {Casual_ClimberPlugin.climbSpeedMod}"), guiStyleSmall , []);
                                 Casual_ClimberPlugin.ClimbSpeedMod.Value = GUILayout.HorizontalSlider(Casual_ClimberPlugin.ClimbSpeedMod.Value, 1f, 2f, []);
                                     GUILayout.Space(10);
                                 // stamina toggle
@@ -320,6 +383,7 @@ namespace Casual_Climber.Patches
 
                             GUILayout.EndArea();
                         GUILayout.EndArea();
+
                     }
                 }
             }
