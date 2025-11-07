@@ -39,6 +39,11 @@
 | Disable Cold           | On - Off                            | On            | Toggle cold affliction On Off                                                                                  |
 | Disable Drowsy         | On - Off                            | On            | Toggle drowsiness affliction On Off                                                                            |
 | Disable Curse          | On - Off                            | On            | Toggle curse affliction On Off                                                                                 |
+| Disable Spores         | On - Off                            | On            | Toggle curse affliction On Off                                                                                 |
+| Disable Thorns         | On - Off                            | On            | Toggle curse affliction On Off                                                                                 |
+| Disable Crab           | On - Off                            | On            | Toggle curse affliction On Off                                                                                 |
+| Disable Web            | On - Off                            | On            | Toggle curse affliction On Off                                                                                 |
+| Disable Weight         | On - Off                            | On            | Toggle curse affliction On Off                                                                                 |
 | Disable Injury         | On - Off                            | On            | Toggle injury affliction On Off                                                                                |
 | Activation Key         | Any                                 | Numpad +      | Primary Key used to Enable Disable Casual Climber mod (rebind in config file)                                  |
 | Activation Key Alt     | Any                                 | =             | Alternate Key used to Enable Disable Casual Climber mod (rebind in config file)                                |
