@@ -12,6 +12,7 @@
 - Increase walk/sprint speed
 - Increase climbing speed
 - Toggle all stats and afflictions on/off indepedently via ingame menus or config.
+- Apply stats and afflictions to self. 
 - Multiple key bind activation methods to toggle on/off. (Change binds in config)
 
 ## ⚙️ Configuration
@@ -50,6 +51,25 @@
 | Config Menu Key        | Any                                 | Numpad -      | Primary Key used to display Casual Climber Configuration Menu (rebind in config file)                          |
 | Config Menu Key Alt    | Any                                 | -             | Alternate Key used to display Casual Climber Configuration Menu (rebind in config file)                        |
    
+
+
+## 🤢 Apply Status Keybinds
+| Status                 | Keys                                | Effect                                                                                                                         |
+| ---------------------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| Hunger                 | Left-Alt + Numpad 0                 | Increase Hunger by 10%                                                                                                         |
+| Poison                 | Left-Alt + Numpad 1                 | Increase Poison by 10%                                                                                                         |
+| Hot                    | Left-Alt + Numpad 2                 | Increase Hot by 10%                                                                                                            |
+| Cold                   | Left-Alt + Numpad 3                 | Increase Cold by 10%                                                                                                           |
+| Drowsy                 | Left-Alt + Numpad 4                 | Increase Drowsy by 10%                                                                                                         |
+| Curse                  | Left-Alt + Numpad 5                 | Increase Curse by 10%                                                                                                          |
+| Spores                 | Left-Alt + Numpad 6                 | Increase Spores by 10%                                                                                                         |
+| Thorns                 | Left-Alt + Numpad 7                 | Increase Thorns by 10%                                                                                                         |
+| Crab                   | Left-Alt + Numpad 8                 | Increase Crab by 10%                                                                                                           |
+| Web                    | Left-Alt + Numpad 9                 | Increase Web by 10%                                                                                                            |
+| Weight                 | Left-Alt + Numpad /                 | Increase Weight by 10%                                                                                                         |
+| Injury                 | Left-Alt + Numpad *                 | Increase Injury by 10%                                                                                                         |
+
+
 
 	  
 ## 📷 Casual Climber Screens
