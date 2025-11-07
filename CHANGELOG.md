@@ -2,4 +2,4 @@
 
 # v1.0.0
 
-Initial Release
+Initial Release v1.0.0
