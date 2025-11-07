@@ -7,21 +7,21 @@
   
 ## 👨‍💻 Mod Features  
 - Casual Climber mod is for those who would prefer a much easier climb or for those looking for a chill worry free fun time.
-- Client side functions
-- Increase jump height
-- Increase walk/sprint speed
-- Increase climbing speed
-- Toggle all stats and afflictions on/off indepedently via ingame menus or config.
-- Apply stats and afflictions to self. 
+- Client side functions.
+- Increase jump height.
+- Increase walk/sprint speed.
+- Increase climbing speed.
+- Toggle all stats afflictions on/off indepedently via ingame menus or config.
+- Apply status afflictions to self. 
 - Multiple key bind activation methods to toggle on/off. (Change binds in config)
 
 ## ⚙️ Configuration
-- All values saved to config in PEAK\BepInEx\config
+- All values saved to config in PEAK\BepInEx\config.
 
 ## 📦 Install
-- Download via [Thunderstore](https://thunderstore.io/c/peak/) or use the thunderstore mod manager app
+- Download via [Thunderstore](https://thunderstore.io/c/peak/) or use the thunderstore mod manager app.
 - Place the `.dll` file in: /PEAK/BepInEx/plugins/
-- Launch game
+- Launch game.
 
 ## 🎮 Usage
 - Press `Numpad +` or `=` to toggle mod on/off.
@@ -51,8 +51,6 @@
 | Config Menu Key        | Any                                 | Numpad -      | Primary Key used to display Casual Climber Configuration Menu (rebind in config file)                          |
 | Config Menu Key Alt    | Any                                 | -             | Alternate Key used to display Casual Climber Configuration Menu (rebind in config file)                        |
    
-
-
 ## 🤢 Apply Status Keybinds
 | Status                 | Keys                                | Effect                                                                                                                         |
 | ---------------------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
@@ -68,8 +66,7 @@
 | Web                    | Left-Alt + Numpad 9                 | Increase Web by 10%                                                                                                            |
 | Weight                 | Left-Alt + Numpad /                 | Increase Weight by 10%                                                                                                         |
 | Injury                 | Left-Alt + Numpad *                 | Increase Injury by 10%                                                                                                         |
-| Remove All Status      | Left-Alt + Numpad .                 | Remove All Status Effects                                                                                                      |
-
+| Remove All Status      | Left-Alt + Numpad .                 | Remove All Status Afflictions                                                                                                  |
 
 
 	  
