@@ -11,9 +11,9 @@
 - Increase jump height.
 - Increase walk/sprint speed.
 - Increase climbing speed.
-- Toggle all stats afflictions on/off indepedently via ingame menus or config.
+- Toggle player stats and status afflictions on/off indepedently via ingame menus or config.
 - Apply status afflictions to self. 
-- Multiple key bind activation methods to toggle on/off. (Change binds in config)
+- Multiple key bind activation methods to toggle on/off. (Change key binds in config)
 
 ## ⚙️ Configuration
 - All values saved to config in PEAK\BepInEx\config.
