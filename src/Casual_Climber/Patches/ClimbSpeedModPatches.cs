@@ -1,5 +1,5 @@
 ﻿using HarmonyLib;
-using UnityEngine.PlayerLoop;
+//using UnityEngine.PlayerLoop;
 
 namespace Casual_Climber.Patches
 {
@@ -10,7 +10,7 @@ namespace Casual_Climber.Patches
         public static float climbSpeedMod;
         public static bool climbSpeedModToggle;
 
-        [HarmonyPatch(typeof(CharacterClimbing), nameof(FixedUpdate))]
+        [HarmonyPatch(typeof(CharacterClimbing), nameof(CharacterClimbing.FixedUpdate))]
         [HarmonyPostfix]
         public static void Awake_Postfix(ref float ___climbSpeedMod)
         {

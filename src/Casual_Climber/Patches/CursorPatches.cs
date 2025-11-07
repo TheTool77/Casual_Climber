@@ -10,14 +10,10 @@ namespace Casual_Climber.Patches
         static void Postfix(GUIManager __instance)
         {
             if (GUI_UI.isConfigVisible == true)
-            {
-                __instance.windowShowingCursor = true;
-                __instance.windowBlockingInput = true;
-            }
+            { __instance.windowShowingCursor = true;
+                __instance.windowBlockingInput = true; }
             else
-            {
-                return;
-            }
+            { return; }
         }
     }
 }
