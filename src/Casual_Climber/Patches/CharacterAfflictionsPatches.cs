@@ -1,8 +1,7 @@
 ﻿using HarmonyLib;
-using JetBrains.Annotations;
 using Photon.Pun;
 using UnityEngine;
-using static CharacterAfflictions;
+//using static CharacterAfflictions;
 
 namespace Casual_Climber.Patches
 {

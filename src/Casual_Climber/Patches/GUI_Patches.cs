@@ -362,7 +362,7 @@ namespace Casual_Climber.Patches
                         Casual_ClimberPlugin.PoisonModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.poisonModifier, $" Poison Disabled {Casual_ClimberPlugin.PoisonModifier.Value}");
                         GUILayout.Space(8);
                         // heat toggle
-                        Casual_ClimberPlugin.HeatModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.heatModifier, $" Heat Disabled {Casual_ClimberPlugin.HeatModifier.Value}");
+                        Casual_ClimberPlugin.HeatModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.heatModifier, $" Hot Disabled {Casual_ClimberPlugin.HeatModifier.Value}");
                         GUILayout.Space(8);
                         // cold toggle
                         Casual_ClimberPlugin.ColdModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.coldModifier, $" Cold Disabled {Casual_ClimberPlugin.ColdModifier.Value}");

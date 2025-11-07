@@ -47,7 +47,7 @@ namespace Casual_Climber
         public static bool poisonModifierString_Value = poisonModifier;
         public static bool poisonModifierString_DefaultValue = CharacterAfflictionsPatches.poisonModifier_Default;
 
-        public static string heatModifierString = "Heat Disabled: ";
+        public static string heatModifierString = "Hot Disabled: ";
         public static bool heatModifierString_Value = heatModifier;
         public static bool heatModifierString_DefaultValue = CharacterAfflictionsPatches.heatModifier_Default;
 
