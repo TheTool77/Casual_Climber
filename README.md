@@ -75,6 +75,6 @@
   
 
 
-## 👤 Credit  
+## 👤 Credits  
 **Author**
 - [TheTool](https://github.com/TheTool77/Casual_Climber/)
