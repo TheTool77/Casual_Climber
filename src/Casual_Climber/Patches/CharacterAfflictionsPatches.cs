@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using UnityEngine;
+using static CharacterAfflictions;
 
 namespace Casual_Climber.Patches
 {
@@ -9,68 +10,78 @@ namespace Casual_Climber.Patches
         public static bool hungerModifier_Default = false;
         public static bool hungerModifier;
         public static bool hungerModifierToggle;
-
         public static bool poisonModifier_Default = false;
         public static bool poisonModifier;
         public static bool poisonModifierToggle;
-
         public static bool heatModifier_Default = false;
         public static bool heatModifier;
         public static bool heatModifierToggle;
-
         public static bool coldModifier_Default = false;
         public static bool coldModifier;
         public static bool coldModifierToggle;
-
         public static bool drowsyModifier_Default = false;
         public static bool drowsyModifier;
         public static bool drowsyModifierToggle;
-
         public static bool curseModifier_Default = false;
         public static bool curseModifier;
         public static bool curseModifierToggle;
-
         public static bool sporesModifier_Default = false;
         public static bool sporesModifier;
         public static bool sporesModifierToggle;
-
         public static bool thornsModifier_Default = false;
         public static bool thornsModifier;
         public static bool thornsModifierToggle;
-
         public static bool crabModifier_Default = false;
         public static bool crabModifier;
         public static bool crabModifierToggle;
-
         public static bool webModifier_Default = false;
         public static bool webModifier;
         public static bool webModifierToggle;
-
         public static bool weightModifier_Default = false;
         public static bool weightModifier;
         public static bool weightModifierToggle;
-
         public static bool injuryModifier_Default = false;
         public static bool injuryModifier;
         public static bool injuryModifierToggle;
+        public static bool modifierDown = false;
+        public static bool keyFlag0;
+        public static bool keyFlag1;
+        public static bool keyFlag2;
+        public static bool keyFlag3;
+        public static bool keyFlag4;
+        public static bool keyFlag5;
+        public static bool keyFlag6;
+        public static bool keyFlag7;
+        public static bool keyFlag8;
+        public static bool keyFlag9;
+        public static bool keyFlag10;
+        public static bool keyFlag11;
+        public static bool keyFlag12;
 
         [HarmonyPatch(typeof(CharacterAfflictions), nameof(CharacterAfflictions.UpdateNormalStatuses))]
         [HarmonyPostfix]
         public static void Awake_Postfix()
         {
-            bool keyFlag0 = Input.GetKeyDown(KeyCode.Keypad0);
-            bool keyFlag1 = Input.GetKeyDown(KeyCode.Keypad1);
-            bool keyFlag2 = Input.GetKeyDown(KeyCode.Keypad2);
-            bool keyFlag3 = Input.GetKeyDown(KeyCode.Keypad3);
-            bool keyFlag4 = Input.GetKeyDown(KeyCode.Keypad4);
-            bool keyFlag5 = Input.GetKeyDown(KeyCode.Keypad5);
-            bool keyFlag6 = Input.GetKeyDown(KeyCode.Keypad6);
-            bool keyFlag7 = Input.GetKeyDown(KeyCode.Keypad7);
-            bool keyFlag8 = Input.GetKeyDown(KeyCode.Keypad8);
-            bool keyFlag9 = Input.GetKeyDown(KeyCode.Keypad9);
-            bool keyFlag10 = Input.GetKeyDown(KeyCode.KeypadDivide);
-            bool keyFlag11 = Input.GetKeyDown(KeyCode.KeypadMultiply);
-            bool keyFlag12 = Input.GetKeyDown(KeyCode.KeypadPeriod);
+            if (Input.GetKeyDown(KeyCode.LeftAlt))
+            { modifierDown = true; } 
+            else if (Input.GetKeyUp(KeyCode.LeftAlt))
+            { modifierDown = false;}
+            if (modifierDown)
+            { 
+                keyFlag0 = Input.GetKeyDown(KeyCode.Keypad0);
+                keyFlag1 = Input.GetKeyDown(KeyCode.Keypad1);
+                keyFlag2 = Input.GetKeyDown(KeyCode.Keypad2);
+                keyFlag3 = Input.GetKeyDown(KeyCode.Keypad3);
+                keyFlag4 = Input.GetKeyDown(KeyCode.Keypad4);
+                keyFlag5 = Input.GetKeyDown(KeyCode.Keypad5);
+                keyFlag6 = Input.GetKeyDown(KeyCode.Keypad6);
+                keyFlag7 = Input.GetKeyDown(KeyCode.Keypad7);
+                keyFlag8 = Input.GetKeyDown(KeyCode.Keypad8);
+                keyFlag9 = Input.GetKeyDown(KeyCode.Keypad9);
+                keyFlag10 = Input.GetKeyDown(KeyCode.KeypadDivide);
+                keyFlag11 = Input.GetKeyDown(KeyCode.KeypadMultiply);
+                keyFlag12 = Input.GetKeyDown(KeyCode.KeypadPeriod);
+            }
 
             if (keyFlag0)
             { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Hunger, 0.2f); }
@@ -132,37 +143,26 @@ namespace Casual_Climber.Patches
 
             if (hungerModifier && hungerModifierToggle)
             { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Hunger, 0f); }
-
             if (poisonModifier && poisonModifierToggle)
             { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Poison, 0f); }
-
             if (heatModifier && heatModifierToggle)
             { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Hot, 0f); }
-
             if (coldModifier && coldModifierToggle)
             { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Cold, 0f); }
-
             if (drowsyModifier && drowsyModifierToggle)
             { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Drowsy, 0f); }
-
             if (curseModifier && curseModifierToggle)
             { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Curse, 0f); }
-
             if (sporesModifier && sporesModifierToggle)
             { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Spores, 0f); }
-
             if (thornsModifier && thornsModifierToggle)
             { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Thorns, 0f); }
-
             if (crabModifier && crabModifierToggle)
             { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Crab, 0f); }
-
             if (webModifier && webModifierToggle)
             { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Web, 0f); }
-
             if (weightModifier && weightModifierToggle)
             { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, 0f); }
-
             if (injuryModifier && injuryModifierToggle)
             { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Injury, 0f); }
         }

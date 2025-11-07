@@ -270,9 +270,7 @@ namespace Casual_Climber.Patches
    
                     GUI.color = Color.white;
                     GUI.contentColor = Color.white;
-                    //GUI.backgroundColor = new Color(255f, 255f, 255f, 1.0f);
                     GUI.backgroundColor = Color.black;
-
                     GUIStyle guiStyleBig = new(GUI.skin.label)
                     {
                         fontSize = 22,
@@ -280,24 +278,20 @@ namespace Casual_Climber.Patches
                         fontStyle = FontStyle.Bold,
                         richText = true
                     };
-
                     GUIStyle guiStyleMed = new(GUI.skin.label)
                     {
                         fontSize = 18,
                         alignment = TextAnchor.UpperLeft,
                         richText = true
                     };
-
                     GUIStyle guiStyleSmall = new(GUI.skin.label)
                     {
                         fontSize = 14,
                         alignment = TextAnchor.UpperLeft,
                         richText = true
                     };
-
                     GUILayout.BeginArea(new Rect(30f, 30f, 400f, 596f), GUI.skin.box);
                     GUILayout.BeginArea(new Rect(6f, 6f, 388, 584f), GUI.skin.box);
-                    GUI.backgroundColor = Color.red;
                     GUILayout.Label("Casual Climber: " + mod_ActiveStatus, guiStyleBig, []);
                     GUI.color = colorDisplayed;
                     GUI.contentColor = colorDisplayed;
@@ -341,7 +335,7 @@ namespace Casual_Climber.Patches
                         {
                             isConfigVisible = false;
                             isValuesVisible = false;
-                            Debug.Log($"[Casual_Climber] Status " + $"Button Pressed! {closeButton}");
+                            Debug.Log($"[Casual_Climber] Status " + $"Menues closed. {closeButton}");
                         }
 
                         GUILayout.Space(10);
@@ -359,43 +353,43 @@ namespace Casual_Climber.Patches
                         Casual_ClimberPlugin.ClimbSpeedMod.Value = GUILayout.HorizontalSlider(Casual_ClimberPlugin.ClimbSpeedMod.Value, 1f, 2f, []);
                         GUILayout.Space(8);
                         // stamina toggle
-                        Casual_ClimberPlugin.StaminaModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.staminaModifier, $"Enable Stamina Modifier {Casual_ClimberPlugin.StaminaModifier.Value}");
+                        Casual_ClimberPlugin.StaminaModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.staminaModifier, $" Enable Stamina Modifier {Casual_ClimberPlugin.StaminaModifier.Value}");
                         GUILayout.Space(8);
                         // hunger toggle
-                        Casual_ClimberPlugin.HungerModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.hungerModifier, $"Disable Hunger {Casual_ClimberPlugin.HungerModifier.Value}");
+                        Casual_ClimberPlugin.HungerModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.hungerModifier, $" Hunger Disabled {Casual_ClimberPlugin.HungerModifier.Value}");
                         GUILayout.Space(8);
                         // poison toggle
-                        Casual_ClimberPlugin.PoisonModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.poisonModifier, $"Disable Poison {Casual_ClimberPlugin.PoisonModifier.Value}");
+                        Casual_ClimberPlugin.PoisonModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.poisonModifier, $" Poison Disabled {Casual_ClimberPlugin.PoisonModifier.Value}");
                         GUILayout.Space(8);
                         // heat toggle
-                        Casual_ClimberPlugin.HeatModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.heatModifier, $"Disable Heat {Casual_ClimberPlugin.HeatModifier.Value}");
+                        Casual_ClimberPlugin.HeatModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.heatModifier, $" Heat Disabled {Casual_ClimberPlugin.HeatModifier.Value}");
                         GUILayout.Space(8);
                         // cold toggle
-                        Casual_ClimberPlugin.ColdModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.coldModifier, $"Disable Cold {Casual_ClimberPlugin.ColdModifier.Value}");
+                        Casual_ClimberPlugin.ColdModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.coldModifier, $" Cold Disabled {Casual_ClimberPlugin.ColdModifier.Value}");
                         GUILayout.Space(8);
                         // drowsy toggle
-                        Casual_ClimberPlugin.DrowsyModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.drowsyModifier, $"Disable Drowsy {Casual_ClimberPlugin.DrowsyModifier.Value}");
+                        Casual_ClimberPlugin.DrowsyModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.drowsyModifier, $" Drowsy Disabled {Casual_ClimberPlugin.DrowsyModifier.Value}");
                         GUILayout.Space(8);
                         // curse toggle
-                        Casual_ClimberPlugin.CurseModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.curseModifier, $"Disable Curse {Casual_ClimberPlugin.CurseModifier.Value}");
+                        Casual_ClimberPlugin.CurseModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.curseModifier, $" Curse Disabled {Casual_ClimberPlugin.CurseModifier.Value}");
                         GUILayout.Space(8);
                         // spores toggle
-                        Casual_ClimberPlugin.SporesModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.sporesModifier, $"Disable Spores {Casual_ClimberPlugin.SporesModifier.Value}");
+                        Casual_ClimberPlugin.SporesModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.sporesModifier, $" Spores Disabled {Casual_ClimberPlugin.SporesModifier.Value}");
                         GUILayout.Space(8);
                         // thorns toggle
-                        Casual_ClimberPlugin.ThornsModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.thornsModifier, $"Disable Thorns {Casual_ClimberPlugin.ThornsModifier.Value}");
+                        Casual_ClimberPlugin.ThornsModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.thornsModifier, $" Thorns Disabled {Casual_ClimberPlugin.ThornsModifier.Value}");
                         GUILayout.Space(7);
                         // crab toggle
-                        Casual_ClimberPlugin.CrabModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.crabModifier, $"Disable Crab {Casual_ClimberPlugin.CrabModifier.Value}");
+                        Casual_ClimberPlugin.CrabModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.crabModifier, $" Crab Disabled {Casual_ClimberPlugin.CrabModifier.Value}");
                         GUILayout.Space(8);
                         // web toggle
-                        Casual_ClimberPlugin.WebModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.webModifier, $"Disable Web {Casual_ClimberPlugin.WebModifier.Value}");
+                        Casual_ClimberPlugin.WebModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.webModifier, $" Web Disabled {Casual_ClimberPlugin.WebModifier.Value}");
                         GUILayout.Space(8);
                         // weight toggle
-                        Casual_ClimberPlugin.WeightModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.weightModifier, $"Disable Weight {Casual_ClimberPlugin.WeightModifier.Value}");
+                        Casual_ClimberPlugin.WeightModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.weightModifier, $" Weight Disabled {Casual_ClimberPlugin.WeightModifier.Value}");
                         GUILayout.Space(8);
                         // injury toggle
-                        Casual_ClimberPlugin.InjuryModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.injuryModifier, $"Disable Injury {Casual_ClimberPlugin.InjuryModifier.Value}");
+                        Casual_ClimberPlugin.InjuryModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.injuryModifier, $" Injury Disabled {Casual_ClimberPlugin.InjuryModifier.Value}");
                         GUILayout.Space(7); 
 
                         GUILayout.EndArea();
