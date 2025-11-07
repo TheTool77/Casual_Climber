@@ -68,6 +68,7 @@
 | Web                    | Left-Alt + Numpad 9                 | Increase Web by 10%                                                                                                            |
 | Weight                 | Left-Alt + Numpad /                 | Increase Weight by 10%                                                                                                         |
 | Injury                 | Left-Alt + Numpad *                 | Increase Injury by 10%                                                                                                         |
+| Remove All Status      | Left-Alt + Numpad .                 | Remove All Status Effects                                                                                                      |
 
 
 
