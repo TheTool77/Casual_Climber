@@ -328,7 +328,7 @@ namespace Casual_Climber.Patches
                         GUILayout.BeginArea(new Rect(444, 30f, 400, 596f), GUI.skin.box);
                         GUILayout.BeginArea(new Rect(6f, 6f, 388f, 584f), GUI.skin.button);
 
-                        GUILayout.Label(string.Format($"Casual Climber Cofiguration"), guiStyleBig, Array.Empty<GUILayoutOption>());
+                        GUILayout.Label(string.Format($"Casual Climber Configuration"), guiStyleBig, Array.Empty<GUILayoutOption>());
 
                         bool closeButton = GUI.Button(new Rect(358f, 8f, 24f, 24f), "X");
                         if (closeButton)
