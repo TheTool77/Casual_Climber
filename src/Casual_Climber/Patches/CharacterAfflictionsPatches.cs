@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using JetBrains.Annotations;
 using Photon.Pun;
 using UnityEngine;
 using static CharacterAfflictions;
@@ -84,44 +85,96 @@ namespace Casual_Climber.Patches
                 keyFlag12 = Input.GetKeyDown(KeyCode.KeypadPeriod);
             }
 
+
+
+
             if (keyFlag0)
-            { PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Hunger, 0.2f, true);
-                Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Hunger, 0.2f, true); }
+            { float hunger = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Hunger);
+                PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Hunger, hunger + 0.1f, true);
+                Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Hunger, hunger + 0.1f, true);
+                hunger += 0.1f;
+                keyFlag0 = false;
+                Debug.Log($"[Casual_Climber] Hunger Status Value =  {hunger}"); }
             if (keyFlag1)
-            { PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Poison, 0.2f, true);
-                Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Poison, 0.2f, true); }
+            { float poison = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Poison);
+                PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Poison, poison + 0.1f, true);
+                Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Poison, poison + 0.1f, true);
+                poison += 0.1f;
+                keyFlag1 = false;
+                Debug.Log($"[Casual_Climber] Poison Status Value =  {poison}"); }
             if (keyFlag2)
-            { PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Hot, 0.2f, true);
-                Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Hot, 0.2f, true); }
+            { float hot = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Hot);
+                PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Hot, hot + 0.1f, true);
+                Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Hot, hot + 0.1f, true);
+                hot += 0.1f;
+                keyFlag2 = false;
+                Debug.Log($"[Casual_Climber] Hot Status Value =  {hot}"); }
             if (keyFlag3)
-            { PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Cold, 0.2f, true);
-                Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Cold, 0.2f, true); }
+            { float cold = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Cold);
+                PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Cold, cold + 0.1f, true);
+                Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Cold, cold + 0.1f, true);
+                cold += 0.1f;
+                keyFlag3 = false;
+                Debug.Log($"[Casual_Climber] Cold Status Value =  {cold}"); }
             if (keyFlag4)
-            { PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Drowsy, 0.2f, true);
-                Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Drowsy, 0.2f, true); }
+            { float drowsy = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Drowsy);
+                PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Drowsy, drowsy + 0.1f, true);
+                Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Drowsy, drowsy + 0.1f, true);
+                drowsy += 0.1f;
+                keyFlag4 = false;
+                Debug.Log($"[Casual_Climber] Drowsy Status Value =  {drowsy}"); }
             if (keyFlag5)
-            { PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Curse, 0.2f, true);
-                Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Curse, 0.2f, true); }
+            { float curse = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Curse);
+                PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Curse, curse + 0.1f, true);
+                Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Curse, curse + 0.1f, true);
+                curse += 0.1f;
+                keyFlag5 = false;
+                Debug.Log($"[Casual_Climber] Curse Status Value =  {curse}"); }
             if (keyFlag6)
-            { PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Spores, 0.2f, true);
-                Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Spores, 0.2f, true); }
+            { float spores = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Spores);
+                PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Spores, spores + 0.1f, true);
+                Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Spores, spores + 0.1f, true);
+                spores += 0.1f;
+                keyFlag6 = false;
+                Debug.Log($"[Casual_Climber] Spores Status Value =  {spores}"); }
             if (keyFlag7)
-            { PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Thorns, 0.2f, true);
-                Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Thorns, 0.2f, true); }
+            { float thorns = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Thorns);
+                PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Thorns, thorns + 0.1f, true);
+                Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Thorns, thorns + 0.1f, true);
+                thorns += 0.1f;
+                keyFlag7 = false;
+                Debug.Log($"[Casual_Climber] Thorns Status Value =  {thorns}"); }
             if (keyFlag8)
-            { PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Crab, 0.2f, true);
-                Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Crab, 0.2f, true); }
+            { float crab = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Crab);
+                PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Crab, crab + 0.1f, true);
+                Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Crab, crab + 0.1f, true);
+                crab += 0.1f;
+                keyFlag8 = false;
+                Debug.Log($"[Casual_Climber] Crab Status Value =  {crab}"); }
             if (keyFlag9)
-            { PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Web, 0.2f, true);
-                Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Web, 0.2f, true); }
+            { float web = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Web);
+                PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Web, web + 0.1f, true);
+                Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Web, web + 0.1f, true);
+                web += 0.1f;
+                keyFlag9 = false;
+                Debug.Log($"[Casual_Climber] Web Status Value =  {web}"); }
             if (keyFlag10)
-            { PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, 0.2f, true);
-                Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, 0.2f, true); }
+            { float weight = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Weight);
+                PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, weight + 0.1f, true);
+                Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, weight + 0.1f, true);
+                weight += 0.1f;
+                keyFlag10 = false;
+                Debug.Log($"[Casual_Climber] Weight Status Value =  {weight}"); }
             if (keyFlag11)
-            { PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Injury, 0.2f, true);
-                Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Injury, 0.2f, true); }
+            { float injury = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Injury);
+                PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Injury, injury + 0.1f, true);
+                Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Injury, injury + 0.1f, true);
+                injury += 0.1f;
+                keyFlag11 = false;
+                Debug.Log($"[Casual_Climber] Injury Status Value =  {injury}"); }
             if (keyFlag12)
-            {   PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Curse, 0f, true);
+            {
+                PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Curse, 0f, true);
                 Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Curse, 0f, true);
                 PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Thorns, 0f, true);
                 Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Thorns, 0f, true);
@@ -132,7 +185,10 @@ namespace Casual_Climber.Patches
                 PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, 0f, true);
                 Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, 0f, true);
                 PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.ClearAllStatus(false);
-                Character.localCharacter.refs.afflictions.ClearAllStatus(false); }
+                Character.localCharacter.refs.afflictions.ClearAllStatus(false);
+                keyFlag12 = false;
+                Debug.Log($"[Casual_Climber] Remove All Status Types");
+            }
 
             hungerModifier = Casual_ClimberPlugin.hungerModifier;
             hungerModifierToggle = Casual_ClimberPlugin.hungerModifierToggle;

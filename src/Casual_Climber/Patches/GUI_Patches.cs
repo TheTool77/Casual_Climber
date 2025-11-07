@@ -325,12 +325,12 @@ namespace Casual_Climber.Patches
                         //Cursor.lockState = CursorLockMode.None;
                         //Cursor.visible = true;
                         GUI.backgroundColor = new Color(20, 20, 20, 1.0f);
-                        GUILayout.BeginArea(new Rect(460, 30f, 400, 596f), GUI.skin.box);
+                        GUILayout.BeginArea(new Rect(444, 30f, 400, 596f), GUI.skin.box);
                         GUILayout.BeginArea(new Rect(6f, 6f, 388f, 584f), GUI.skin.button);
 
                         GUILayout.Label(string.Format($"Casual Climber Cofiguration"), guiStyleBig, Array.Empty<GUILayoutOption>());
 
-                        bool closeButton = GUI.Button(new Rect(360f, 8f, 24f, 24f), "X");
+                        bool closeButton = GUI.Button(new Rect(358f, 8f, 24f, 24f), "X");
                         if (closeButton)
                         {
                             isConfigVisible = false;
@@ -351,7 +351,7 @@ namespace Casual_Climber.Patches
                         // climb speed slider
                         GUILayout.Label(string.Format($"Climb Speed {Casual_ClimberPlugin.climbSpeedMod}"), guiStyleSmall , []);
                         Casual_ClimberPlugin.ClimbSpeedMod.Value = GUILayout.HorizontalSlider(Casual_ClimberPlugin.ClimbSpeedMod.Value, 1f, 2f, []);
-                        GUILayout.Space(8);
+                        GUILayout.Space(9);
                         // stamina toggle
                         Casual_ClimberPlugin.StaminaModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.staminaModifier, $" Enable Stamina Modifier {Casual_ClimberPlugin.StaminaModifier.Value}");
                         GUILayout.Space(8);
@@ -391,6 +391,110 @@ namespace Casual_Climber.Patches
                         // injury toggle
                         Casual_ClimberPlugin.InjuryModifier.Value = GUILayout.Toggle(Casual_ClimberPlugin.injuryModifier, $" Injury Disabled {Casual_ClimberPlugin.InjuryModifier.Value}");
                         GUILayout.Space(7); 
+
+                        GUILayout.EndArea();
+                        GUILayout.EndArea();
+
+                        GUI.backgroundColor = new Color(20, 20, 20, 1.0f);
+                        GUILayout.BeginArea(new Rect(444, 630f, 400, 186f), GUI.skin.box);
+                        GUILayout.BeginArea(new Rect(6f, 6f, 388f, 174f), GUI.skin.button);
+
+                        GUILayout.Label(string.Format($"Apply Status Types"), guiStyleMed, Array.Empty<GUILayoutOption>());
+
+                        bool hungerButton = GUI.Button(new Rect(8f, 40f, 90f, 24f), "Hunger");
+                        if (hungerButton)
+                        {
+                            CharacterAfflictionsPatches.keyFlag0 = true;
+                            Debug.Log($"[Casual_Climber] Hunger Button pressed");
+                        }
+
+                        bool poisonButton = GUI.Button(new Rect(102f, 40f, 90, 24f), "Poison");
+                        if (poisonButton)
+                        {
+                            CharacterAfflictionsPatches.keyFlag1 = true;
+                            Debug.Log($"[Casual_Climber] Poison Button pressed");
+                        }
+
+                        bool hotButton = GUI.Button(new Rect(196, 40f, 90, 24f), "Hot");
+                        if (hotButton)
+                        {
+                            CharacterAfflictionsPatches.keyFlag2 = true;
+                            Debug.Log($"[Casual_Climber] Hot Button pressed");
+                        }
+
+                        bool coldButton = GUI.Button(new Rect(290, 40f, 90, 24f), "Cold");
+                        if (coldButton)
+                        {
+                            CharacterAfflictionsPatches.keyFlag3 = true;
+                            Debug.Log($"[Casual_Climber] Cold Button pressed");
+                        }
+
+                        bool drowsyButton = GUI.Button(new Rect(8f, 70f, 90f, 24f), "Drowsy");
+                        if (drowsyButton)
+                        {
+                            CharacterAfflictionsPatches.keyFlag4 = true;
+                            Debug.Log($"[Casual_Climber] Drowsy Button pressed");
+                        }
+
+                        bool curseButton = GUI.Button(new Rect(102f, 70f, 90, 24f), "Curse");
+                        if (curseButton)
+                        {
+                            CharacterAfflictionsPatches.keyFlag5 = true;
+                            Debug.Log($"[Casual_Climber] Curse Button pressed");
+                        }
+
+                        bool sporesButton = GUI.Button(new Rect(196, 70f, 90, 24f), "Spores");
+                        if (sporesButton)
+                        {
+                            CharacterAfflictionsPatches.keyFlag6 = true;
+                            Debug.Log($"[Casual_Climber] Spores Button pressed");
+                        }
+
+                        bool thornsButton = GUI.Button(new Rect(290, 70f, 90, 24f), "Thorns");
+                        if (thornsButton)
+                        {
+                            CharacterAfflictionsPatches.keyFlag7 = true;
+                            Debug.Log($"[Casual_Climber] Thorns Button pressed");
+                        }
+
+                        bool crabButton = GUI.Button(new Rect(8f, 100f, 90f, 24f), "Crab");
+                        if (crabButton)
+                        {
+                            CharacterAfflictionsPatches.keyFlag8 = true;
+                            Debug.Log($"[Casual_Climber] Crab Button pressed");
+                        }
+
+                        bool webButton = GUI.Button(new Rect(102f, 100f, 90, 24f), "Web");
+                        if (webButton)
+                        {
+                            CharacterAfflictionsPatches.keyFlag9 = true;
+                            Debug.Log($"[Casual_Climber] Web Button pressed");
+                        }
+
+                        bool weightButton = GUI.Button(new Rect(196, 100f, 90, 24f), "Weight");
+                        if (weightButton)
+                        {
+                            CharacterAfflictionsPatches.keyFlag10 = true;
+                            Debug.Log($"[Casual_Climber] Weight Button pressed");
+                        }
+
+                        bool injuryButton = GUI.Button(new Rect(290, 100f, 90, 24f), "Injury");
+                        if (injuryButton)
+                        {
+                            CharacterAfflictionsPatches.keyFlag11 = true;
+                            Debug.Log($"[Casual_Climber] Injury Button pressed");
+                        }
+
+                        bool removeAllButton = GUI.Button(new Rect(8f, 136f, 372f, 24f), "Remove All Status Types");
+                        if (removeAllButton)
+                        {
+                            CharacterAfflictionsPatches.keyFlag12 = true;
+                            Debug.Log($"[Casual_Climber] Remove All Status Types Button pressed");
+                        }
+
+
+                        GUILayout.Space(10);
+                        GUILayout.Space(10);
 
                         GUILayout.EndArea();
                         GUILayout.EndArea();
