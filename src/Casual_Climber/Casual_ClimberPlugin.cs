@@ -14,6 +14,8 @@ namespace Casual_Climber
         private const string MyGUID = "com.TheTool.Casual_Climber";
         private const string PluginName = "Casual_Climber";
         private const string VersionString = "1.0.0";
+        private static readonly Harmony Harmony = new(MyGUID);
+        public static ManualLogSource Log = new(PluginName);
 
         public static bool casual_climberMasterKeyToggle = false;
 
@@ -26,67 +28,51 @@ namespace Casual_Climber
         public static string jumpString = "Jump Height Set to: ";
         public static float jumpString_Value = jumpGravity;
         public static float jumpString_DefaultValue = JumpGravityPatches.jumpGravity_Default;
-
         public static string moveSpeedString = "Movement Speed Set to: ";
         public static float moveSpeedString_Value = movementForce;
         public static float moveSpeedString_DefaultValue = MovementForcePatches.movementForce_Default;
-
         public static string climbSpeedString = "Climb Speed Set to: ";
         public static float climbSpeedString_Value = climbSpeedMod;
         public static float climbSpeedString_DefaultValue = ClimbSpeedModPatches.climbSpeedMod_Default;
-
         public static string staminaModifierString = "Stamina Modifier Enabled: ";
         public static bool staminaModifierString_Value = staminaModifier;
         public static bool staminaModifierString_DefaultValue = CurrentStaminaPatches.staminaModifier_Default;
-
         public static string hungerModifierString = "Hunger Disabled: ";
         public static bool hungerModifierString_Value = hungerModifier;
         public static bool hungerModifierString_DefaultValue = CharacterAfflictionsPatches.hungerModifier_Default;
-
         public static string poisonModifierString = "Poison Disabled: ";
         public static bool poisonModifierString_Value = poisonModifier;
         public static bool poisonModifierString_DefaultValue = CharacterAfflictionsPatches.poisonModifier_Default;
-
         public static string heatModifierString = "Hot Disabled: ";
         public static bool heatModifierString_Value = heatModifier;
         public static bool heatModifierString_DefaultValue = CharacterAfflictionsPatches.heatModifier_Default;
-
         public static string coldModifierString = "Cold Disabled: ";
         public static bool coldModifierString_Value = coldModifier;
         public static bool coldModifierString_DefaultValue = CharacterAfflictionsPatches.coldModifier_Default;
-
         public static string drowsyModifierString = "Drowsiness Disabled: ";
         public static bool drowsyModifierString_Value = drowsyModifier;
         public static bool drowsyModifierString_DefaultValue = CharacterAfflictionsPatches.drowsyModifier_Default;
-
         public static string curseModifierString = "Curse Disabled: ";
         public static bool curseModifierString_Value = curseModifier;
         public static bool curseModifierString_DefaultValue = CharacterAfflictionsPatches.curseModifier_Default;
-
         public static string sporesModifierString = "Spores Disabled: ";
         public static bool sporesModifierString_Value = sporesModifier;
         public static bool sporesModifierString_DefaultValue = CharacterAfflictionsPatches.sporesModifier_Default;
-
         public static string thornsModifierString = "Thorns Disabled: ";
         public static bool thornsModifierString_Value = thornsModifier;
         public static bool thornsModifierString_DefaultValue = CharacterAfflictionsPatches.thornsModifier_Default;
-
         public static string crabModifierString = "Crab Disabled: ";
         public static bool crabModifierString_Value = crabModifier;
         public static bool crabModifierString_DefaultValue = CharacterAfflictionsPatches.crabModifier_Default;
-
         public static string webModifierString = "Web Disabled: ";
         public static bool webModifierString_Value = webModifier;
         public static bool webModifierString_DefaultValue = CharacterAfflictionsPatches.webModifier_Default;
-
         public static string weightModifierString = "Weight Disabled: ";
         public static bool weightModifierString_Value = weightModifier;
         public static bool weightModifierString_DefaultValue = CharacterAfflictionsPatches.weightModifier_Default;
-
         public static string injuryModifierString = "Injury Disabled: ";
         public static bool injuryModifierString_Value = injuryModifier;
         public static bool injuryModifierString_DefaultValue = CharacterAfflictionsPatches.injuryModifier_Default;
-
 
         // Config entry key strings
         // These will appear in the config file created by BepInEx and can also be used
@@ -123,22 +109,16 @@ namespace Casual_Climber
         public static ConfigEntry<bool>? ColdModifier;
         public static ConfigEntry<bool>? DrowsyModifier;
         public static ConfigEntry<bool>? CurseModifier;
-
         public static ConfigEntry<bool>? SporesModifier;
         public static ConfigEntry<bool>? ThornsModifier;
         public static ConfigEntry<bool>? CrabModifier;
         public static ConfigEntry<bool>? WebModifier;
         public static ConfigEntry<bool>? WeightModifier;
-
-
         public static ConfigEntry<bool>? InjuryModifier;
         public static ConfigEntry<KeyboardShortcut>? KeyboardKey_1;
         public static ConfigEntry<KeyboardShortcut>? KeyboardKey_1_Alt;
         public static ConfigEntry<KeyboardShortcut>? KeyboardKey_2;
         public static ConfigEntry<KeyboardShortcut>? KeyboardKey_2_Alt;
-
-        private static readonly Harmony Harmony = new(MyGUID);
-        public static ManualLogSource Log = new(PluginName);
 
         public static float jumpGravity;
         public static bool jumpGravityToggle;
@@ -173,10 +153,8 @@ namespace Casual_Climber
         public static bool injuryModifier;
         public static bool injuryModifierToggle;
 
-
         public void Awake()
         {
-            // Static Log
             Log = Logger;
 
             jumpGravityToggle = false;
@@ -201,7 +179,6 @@ namespace Casual_Climber
             UnityEngine.Object.DontDestroyOnLoad(gameObject);
             GUI_UI.Instance = gameObject.AddComponent<GUI_UI>();
 
-
             // JumpHeight
             JumpHeight = Config.Bind(
                 "General",
@@ -223,7 +200,6 @@ namespace Casual_Climber
                 2.0f,
                 new ConfigDescription("Climb Speed Value. min:1 - max:2",
                 new AcceptableValueRange<float>(1.0f, 2.0f)));
-
             // StaminaModifier
             StaminaModifier = Config.Bind(
                 "General",
@@ -231,7 +207,6 @@ namespace Casual_Climber
                 true,
                 new ConfigDescription("Enable Stamina Modifier.",
                 new AcceptableValueList<bool>(false, true)));
-
             // Hunger
             HungerModifier = Config.Bind(
                 "General",
@@ -239,7 +214,6 @@ namespace Casual_Climber
                 true,
                 new ConfigDescription("Disable Hunger.",
                 new AcceptableValueList<bool>(false, true)));
-
             // Poison
             PoisonModifier = Config.Bind(
                 "General",
@@ -247,15 +221,13 @@ namespace Casual_Climber
                 true,
                 new ConfigDescription("Disable Poison.",
                 new AcceptableValueList<bool>(false, true)));
-
-            // Heat
+            // Hot
             HeatModifier = Config.Bind(
                 "General",
                 HeatModifierKey,
                 true,
-                new ConfigDescription("Disable Heat.",
+                new ConfigDescription("Disable Hot.",
                 new AcceptableValueList<bool>(false, true)));
-
             // Cold
             ColdModifier = Config.Bind(
                 "General",
@@ -263,7 +235,6 @@ namespace Casual_Climber
                 true,
                 new ConfigDescription("Disable Cold.",
                 new AcceptableValueList<bool>(false, true)));
-
             // Drowsy
             DrowsyModifier = Config.Bind(
                 "General",
@@ -271,7 +242,6 @@ namespace Casual_Climber
                 true,
                 new ConfigDescription("Disable Drowsiness.",
                 new AcceptableValueList<bool>(false, true)));
-
             // Curse
             CurseModifier = Config.Bind(
                 "General",
@@ -279,7 +249,6 @@ namespace Casual_Climber
                 true,
                 new ConfigDescription("Disable Curse.",
                 new AcceptableValueList<bool>(false, true)));
-
             // Spores
             SporesModifier = Config.Bind(
                 "General",
@@ -287,7 +256,6 @@ namespace Casual_Climber
                 true,
                 new ConfigDescription("Disable Spores.",
                 new AcceptableValueList<bool>(false, true)));
-
             // Thorns
             ThornsModifier = Config.Bind(
                 "General",
@@ -295,7 +263,6 @@ namespace Casual_Climber
                 true,
                 new ConfigDescription("Disable Thorns.",
                 new AcceptableValueList<bool>(false, true)));
-
             // Crab
             CrabModifier = Config.Bind(
                 "General",
@@ -303,7 +270,6 @@ namespace Casual_Climber
                 true,
                 new ConfigDescription("Disable Crab.",
                 new AcceptableValueList<bool>(false, true)));
-
             // Web
             WebModifier = Config.Bind(
                 "General",
@@ -311,7 +277,6 @@ namespace Casual_Climber
                 true,
                 new ConfigDescription("Disable Web.",
                 new AcceptableValueList<bool>(false, true)));
-
             // Weight
             WeightModifier = Config.Bind(
                 "General",
@@ -319,7 +284,6 @@ namespace Casual_Climber
                 true,
                 new ConfigDescription("Disable Weight.",
                 new AcceptableValueList<bool>(false, true)));
-
             // Injury
             InjuryModifier = Config.Bind(
                 "General",
@@ -335,7 +299,6 @@ namespace Casual_Climber
                 // new KeyboardKey_1(KeyCode.A, KeyCode.LeftControl));
                 new KeyboardShortcut(KeyCode.KeypadPlus), 
                 new ConfigDescription("Activate Mod Key."));
-
             // Keyboard Alt Key Mod Activation Alt
             KeyboardKey_1_Alt = Config.Bind
                 ("General",
@@ -343,7 +306,6 @@ namespace Casual_Climber
                 // new KeyboardKey_1(KeyCode.A, KeyCode.LeftControl));
                 new KeyboardShortcut(KeyCode.Equals),
                 new ConfigDescription("Activate Mod Key."));
-
             // Keyboard Key Mod Config
             KeyboardKey_2 = Config.Bind
                 ("General",
@@ -351,7 +313,6 @@ namespace Casual_Climber
                 // new KeyboardKey_1(KeyCode.A, KeyCode.LeftControl));
                 new KeyboardShortcut(KeyCode.KeypadMinus),
                 new ConfigDescription("Show Mod Config Key."));
-
             // Keyboard Alt Key Mod Config
             KeyboardKey_2_Alt = Config.Bind
                 ("General",
@@ -361,7 +322,7 @@ namespace Casual_Climber
                 new ConfigDescription("Show Mod Config Key."));
 
 
-            // Add listeners methods to run if and when settings are changed by the player.
+            // Check settings changed.
             JumpHeight.SettingChanged += ConfigSettingChanged;
             MovementSpeed.SettingChanged += ConfigSettingChanged;
             ClimbSpeedMod.SettingChanged += ConfigSettingChanged;
