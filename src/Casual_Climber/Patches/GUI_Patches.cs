@@ -335,7 +335,7 @@ namespace Casual_Climber.Patches
                         {
                             isConfigVisible = false;
                             isValuesVisible = false;
-                            Debug.Log($"[Casual_Climber] Status " + $"Menues closed. {closeButton}");
+                            Debug.Log($"[Casual_Climber] Status " + $"Menus closed. {closeButton}");
                         }
 
                         GUILayout.Space(10);
