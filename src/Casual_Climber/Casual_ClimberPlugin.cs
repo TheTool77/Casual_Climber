@@ -240,7 +240,7 @@ namespace Casual_Climber
                 "General",
                 DrowsyModifierKey,
                 true,
-                new ConfigDescription("Disable Drowsiness.",
+                new ConfigDescription("Disable Drowsy.",
                 new AcceptableValueList<bool>(false, true)));
             // Curse
             CurseModifier = Config.Bind(
@@ -383,14 +383,11 @@ namespace Casual_Climber
             coldModifierString_Value = coldModifier;
             drowsyModifierString_Value = drowsyModifier;
             curseModifierString_Value = curseModifier;
-
             sporesModifierString_Value = sporesModifier;
             thornsModifierString_Value = thornsModifier;
             crabModifierString_Value = crabModifier;
             webModifierString_Value = webModifier;
             weightModifierString_Value = weightModifier;
-
-
             injuryModifierString_Value = injuryModifier;
 
             //Display Config GUI
@@ -427,8 +424,6 @@ namespace Casual_Climber
 
         public static void MasterSwitchesToggle()
         {
-
-            // casual_climberMasterKeyToggle
             if (casual_climberMasterKeyToggle == false)
             { casual_climberMasterKeyToggle = true; }
             else
@@ -448,7 +443,6 @@ namespace Casual_Climber
                 jumpGravityToggle = false;
                 Log.LogInfo($"jumpGravity Value: {JumpGravityPatches.jumpGravity_Default}: Default");
             }
-
             // movementForceToggle
             if (movementForceToggle == false)
             {
@@ -460,7 +454,6 @@ namespace Casual_Climber
                 movementForceToggle = false;
                 Log.LogInfo($"movementForce Value: {MovementForcePatches.movementForce_Default}: Default");
             }
-
             // climbSpeedModToggle
             if (climbSpeedModToggle == false)
             {
@@ -472,7 +465,6 @@ namespace Casual_Climber
                 climbSpeedModToggle = false;
                 Log.LogInfo($"climbSpeedMod Value: {ClimbSpeedModPatches.climbSpeedMod_Default}: Default");
             }
-
             // staminaModifierToggle
             if (staminaModifierToggle == false)
             {
@@ -484,7 +476,6 @@ namespace Casual_Climber
                 staminaModifierToggle = false;
                 Log.LogInfo($"staminaModifier Value: {CurrentStaminaPatches.staminaModifier_Default}: Default");
             }
-
             // hungerModifierToggle
             if (hungerModifierToggle == false)
             {
@@ -496,7 +487,6 @@ namespace Casual_Climber
                 hungerModifierToggle = false;
                 Log.LogInfo($"hungerModifier Value: {CharacterAfflictionsPatches.hungerModifier_Default}: Default");
             }
-
             // poisonModifierToggle
             if (poisonModifierToggle == false)
             {
@@ -508,7 +498,6 @@ namespace Casual_Climber
                 poisonModifierToggle = false;
                 Log.LogInfo($"poisonModifier Value: {CharacterAfflictionsPatches.poisonModifier_Default}: Default");
             }
-
             // heatModifierToggle
             if (heatModifierToggle == false)
             {
@@ -520,7 +509,6 @@ namespace Casual_Climber
                 heatModifierToggle = false;
                 Log.LogInfo($"heatModifier Value: {CharacterAfflictionsPatches.heatModifier_Default}: Default");
             }
-
             // coldModifierToggle
             if (coldModifierToggle == false)
             {
@@ -532,7 +520,6 @@ namespace Casual_Climber
                 coldModifierToggle = false;
                 Log.LogInfo($"coldModifier Value: {CharacterAfflictionsPatches.coldModifier_Default}: Default");
             }
-
             // drowsyModifierToggle
             if (drowsyModifierToggle == false)
             {
@@ -544,7 +531,6 @@ namespace Casual_Climber
                 drowsyModifierToggle = false;
                 Log.LogInfo($"drowsyModifier Value: {CharacterAfflictionsPatches.drowsyModifier_Default}: Default");
             }
-
             // curseModifierToggle
             if (curseModifierToggle == false)
             {
@@ -556,7 +542,6 @@ namespace Casual_Climber
                 curseModifierToggle = false;
                 Log.LogInfo($"curseModifier Value: {CharacterAfflictionsPatches.curseModifier_Default}: Default");
             }
-
             // sporesModifierToggle
             if (sporesModifierToggle == false)
             {
@@ -568,7 +553,6 @@ namespace Casual_Climber
                 sporesModifierToggle = false;
                 Log.LogInfo($"sporesModifier Value: {CharacterAfflictionsPatches.sporesModifier_Default}: Default");
             }
-
             // thornsModifierToggle
             if (thornsModifierToggle == false)
             {
@@ -580,7 +564,6 @@ namespace Casual_Climber
                 thornsModifierToggle = false;
                 Log.LogInfo($"thornsModifier Value: {CharacterAfflictionsPatches.thornsModifier_Default}: Default");
             }
-
             // crabModifierToggle
             if (crabModifierToggle == false)
             {
@@ -592,7 +575,6 @@ namespace Casual_Climber
                 crabModifierToggle = false;
                 Log.LogInfo($"crabModifier Value: {CharacterAfflictionsPatches.crabModifier_Default}: Default");
             }
-
             // webModifierToggle
             if (webModifierToggle == false)
             {
@@ -604,7 +586,6 @@ namespace Casual_Climber
                 webModifierToggle = false;
                 Log.LogInfo($"webModifier Value: {CharacterAfflictionsPatches.webModifier_Default}: Default");
             }
-
             // weightModifierToggle
             if (weightModifierToggle == false)
             {
@@ -616,7 +597,6 @@ namespace Casual_Climber
                 weightModifierToggle = false;
                 Log.LogInfo($"weightModifier Value: {CharacterAfflictionsPatches.weightModifier_Default}: Default");
             }
-
             // injuryModifierToggle
             if (injuryModifierToggle == false)
             {
@@ -648,7 +628,7 @@ namespace Casual_Climber
 
         }            
 
-        // Handle changes to conf made by the player
+        // Handle changes to config
         public static void ConfigSettingChanged(object sender, System.EventArgs e)
         {
             SettingChangedEventArgs? settingChangedEventArgs = e as SettingChangedEventArgs;
@@ -666,7 +646,6 @@ namespace Casual_Climber
                     Casual_ClimberPlugin.Log.LogInfo($"jumpGravity Value: {jumpGravity}");
                 }
             }
-
             // MovementSpeedKey ChangedSetting
             if (settingChangedEventArgs.ChangedSetting.Definition.Key == MovementSpeedKey)
             {
@@ -676,7 +655,6 @@ namespace Casual_Climber
                     Casual_ClimberPlugin.Log.LogInfo($"movementForce Value: {movementForce}");
                 }
             }
-
             // ClimbSpeedModKey ChangedSetting
             if (settingChangedEventArgs.ChangedSetting.Definition.Key == ClimbSpeedModKey)
             {
@@ -686,7 +664,6 @@ namespace Casual_Climber
                     Casual_ClimberPlugin.Log.LogInfo($"climbSpeed Value: {climbSpeedMod}");
                 }
             }
-
             // StaminaModifierKey ChangedSetting
             if (settingChangedEventArgs.ChangedSetting.Definition.Key == StaminaModifierKey)
             {
@@ -696,7 +673,6 @@ namespace Casual_Climber
                     Casual_ClimberPlugin.Log.LogInfo($"staminaModifier Value: {staminaModifier}");
                 }
             }
-
             // HungerModifierKey ChangedSetting
             if (settingChangedEventArgs.ChangedSetting.Definition.Key == HungerModifierKey)
             {
@@ -706,7 +682,6 @@ namespace Casual_Climber
                     Casual_ClimberPlugin.Log.LogInfo($"hungerModifier Value: {hungerModifier}");
                 }
             }
-
             // PoisonModifierKey ChangedSetting
             if (settingChangedEventArgs.ChangedSetting.Definition.Key == PoisonModifierKey)
             {
@@ -716,7 +691,6 @@ namespace Casual_Climber
                     Casual_ClimberPlugin.Log.LogInfo($"poisonModifier Value: {poisonModifier}");
                 }
             }
-
             // HeatModifierKey ChangedSetting
             if (settingChangedEventArgs.ChangedSetting.Definition.Key == HeatModifierKey)
             {
@@ -726,7 +700,6 @@ namespace Casual_Climber
                     Casual_ClimberPlugin.Log.LogInfo($"heatModifier Value: {heatModifier}");
                 }
             }
-
             // ColdModifierKey ChangedSetting
             if (settingChangedEventArgs.ChangedSetting.Definition.Key == ColdModifierKey)
             {
@@ -736,7 +709,6 @@ namespace Casual_Climber
                     Casual_ClimberPlugin.Log.LogInfo($"coldModifier Value: {coldModifier}");
                 }
             }
-
             // DrowsyModifierKey ChangedSetting
             if (settingChangedEventArgs.ChangedSetting.Definition.Key == DrowsyModifierKey)
             {
@@ -746,7 +718,6 @@ namespace Casual_Climber
                     Casual_ClimberPlugin.Log.LogInfo($"drowsyModifier Value: {drowsyModifier}");
                 }
             }
-
             // CurseModifierKey ChangedSetting
             if (settingChangedEventArgs.ChangedSetting.Definition.Key == CurseModifierKey)
             {
@@ -756,7 +727,6 @@ namespace Casual_Climber
                     Casual_ClimberPlugin.Log.LogInfo($"curseModifier Value: {curseModifier}");
                 }
             }
-
             // SporesModifierKey ChangedSetting
             if (settingChangedEventArgs.ChangedSetting.Definition.Key == SporesModifierKey)
             {
@@ -766,7 +736,6 @@ namespace Casual_Climber
                     Casual_ClimberPlugin.Log.LogInfo($"sporesModifier Value: {sporesModifier}");
                 }
             }
-
             // ThornsModifierKey ChangedSetting
             if (settingChangedEventArgs.ChangedSetting.Definition.Key == ThornsModifierKey)
             {
@@ -776,7 +745,6 @@ namespace Casual_Climber
                     Casual_ClimberPlugin.Log.LogInfo($"thornsModifier Value: {thornsModifier}");
                 }
             }
-
             // CrabModifierKey ChangedSetting
             if (settingChangedEventArgs.ChangedSetting.Definition.Key == CrabModifierKey)
             {
@@ -786,7 +754,6 @@ namespace Casual_Climber
                     Casual_ClimberPlugin.Log.LogInfo($"crabModifier Value: {crabModifier}");
                 }
             }
-
             // WebModifierKey ChangedSetting
             if (settingChangedEventArgs.ChangedSetting.Definition.Key == WebModifierKey)
             {
@@ -796,7 +763,6 @@ namespace Casual_Climber
                     Casual_ClimberPlugin.Log.LogInfo($"webModifier Value: {webModifier}");
                 }
             }
-
             // WeightModifierKey ChangedSetting
             if (settingChangedEventArgs.ChangedSetting.Definition.Key == WeightModifierKey)
             {
@@ -806,7 +772,6 @@ namespace Casual_Climber
                     Casual_ClimberPlugin.Log.LogInfo($"weightModifier Value: {weightModifier}");
                 }
             }
-
             // InjuryModifierKey ChangedSetting
             if (settingChangedEventArgs.ChangedSetting.Definition.Key == InjuryModifierKey)
             {
@@ -817,25 +782,21 @@ namespace Casual_Climber
                 }
             }
 
-
             // KeyboardKey_1Key ChangedSetting
             if (settingChangedEventArgs.ChangedSetting.Definition.Key == KeyboardKey_1Key)
             {
                 KeyboardShortcut nullValue = (KeyboardShortcut)settingChangedEventArgs.ChangedSetting.BoxedValue;
             }
-
             // KeyboardKey_1_AltKey ChangedSetting
             if (settingChangedEventArgs.ChangedSetting.Definition.Key == KeyboardKey_1_AltKey)
             {
                 KeyboardShortcut nullValue = (KeyboardShortcut)settingChangedEventArgs.ChangedSetting.BoxedValue;
             }
-
             // KeyboardKey_2Key ChangedSetting
             if (settingChangedEventArgs.ChangedSetting.Definition.Key == KeyboardKey_2Key)
             {
                 KeyboardShortcut nullValue = (KeyboardShortcut)settingChangedEventArgs.ChangedSetting.BoxedValue;
             }
-
             // KeyboardKey_2_AltKey ChangedSetting
             if (settingChangedEventArgs.ChangedSetting.Definition.Key == KeyboardKey_2_AltKey)
             {
