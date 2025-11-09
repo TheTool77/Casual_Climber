@@ -1,6 +1,4 @@
 ﻿using HarmonyLib;
-//using Photon.Pun;
-//using Photon.Realtime;
 using UnityEngine;
 
 namespace Casual_Climber.Patches
@@ -210,8 +208,6 @@ namespace Casual_Climber.Patches
             weightModifierToggle = Casual_ClimberPlugin.weightModifierToggle;
             injuryModifier = Casual_ClimberPlugin.injuryModifier;
             injuryModifierToggle = Casual_ClimberPlugin.injuryModifierToggle;
-
-
 
             if (hungerModifier && hungerModifierToggle)
             { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Hunger, 0f, false); }

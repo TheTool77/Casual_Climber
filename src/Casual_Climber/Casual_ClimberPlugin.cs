@@ -13,7 +13,7 @@ namespace Casual_Climber
         // Begin Casual Climber Mod for PEAK by TheTool
         private const string MyGUID = "com.TheTool.Casual_Climber";
         private const string PluginName = "Casual_Climber";
-        private const string VersionString = "1.0.0";
+        private const string VersionString = "1.0.1";
         private static readonly Harmony Harmony = new(MyGUID);
         public static ManualLogSource Log = new(PluginName);
 
