@@ -2,8 +2,7 @@
 
 # v1.0.1
 
-v1.0.1
-Fixed player lagging issues.
+- Fixed player lagging issues.
 
 # v1.0.0
 
