@@ -1,5 +1,13 @@
 ﻿using HarmonyLib;
+using Photon.Pun;
+using pworld.Scripts;
+using System;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.TextCore.Text;
+using Zorro.ControllerSupport;
+using Zorro.Core;
+using static Zorro.ControllerSupport.Rumble.RumbleClip;
 
 namespace Casual_Climber.Patches
 {
@@ -246,5 +254,68 @@ namespace Casual_Climber.Patches
             { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Injury, 0f, false); }
             //{ PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Injury, 0f, true); }
         }
+
+        //[HarmonyPatch(typeof(CharacterAfflictions), nameof(CharacterAfflictions.UpdateWeight))]
+        //[HarmonyPrefix]
+        //public static bool Awake_Prefix()
+        //{
+        //    if (weightModifier && weightModifierToggle)
+        //    {
+
+        //        Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, 0f, false);
+
+        //        return true;
+        //    }
+        //    return true;
+        //}
+
+
+        [HarmonyPatch(typeof(CharacterAfflictions), nameof(CharacterAfflictions.UpdateWeight))]
+        [HarmonyPrefix]
+        public static bool Awake_Post(CharacterAfflictions __instance)
+        {
+            //float weight = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Weight);
+
+            if (weightModifier && weightModifierToggle)
+            {
+                int num = 0;
+                for (int i = 0; i < __instance.character.player.itemSlots.Length; i++)
+                {
+                    ItemSlot itemSlot = __instance.character.player.itemSlots[i];
+                    if (itemSlot.prefab != null)
+                    {
+                        num += 0;
+                    }
+                }
+
+                __instance.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, 0.025f * (float)num, false);
+
+                return false;
+            }
+            else  
+            {
+                float weight = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Weight);
+                //__instance.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, weight, false);
+                //weight += 0.1f;
+
+                float num = 0f;
+                for (int i = 0; i < __instance.character.player.itemSlots.Length; i++)
+                {
+                    ItemSlot itemSlot = __instance.character.player.itemSlots[i];
+                    if (itemSlot.prefab != null)
+                    {
+                        num += itemSlot.prefab.CarryWeight;
+                    }
+                }
+
+                __instance.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, 0.025f * num, false);
+
+                return false;
+            }
+ 
+        }
+
+
+
     }
 }
