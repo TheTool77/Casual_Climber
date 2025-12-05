@@ -65,6 +65,7 @@ namespace Casual_Climber.Patches
         public static bool keyFlag11;
         public static bool keyFlag12;
 
+
         [HarmonyPatch(typeof(CharacterAfflictions), nameof(CharacterAfflictions.UpdateNormalStatuses))]
         [HarmonyPostfix]
         public static void Awake_Postfix()
@@ -270,52 +271,137 @@ namespace Casual_Climber.Patches
         //}
 
 
+        //[HarmonyPatch(typeof(CharacterAfflictions), nameof(CharacterAfflictions.UpdateWeight))]
+        //[HarmonyPrefix]
+        //public static bool Awake_Post(CharacterAfflictions __instance)
+        //{
+        //    //float weight = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Weight);
+
+        //    if (weightModifier && weightModifierToggle)
+        //    {
+        //        int num = 0;
+        //        for (int i = 0; i < __instance.character.player.itemSlots.Length; i++)
+        //        {
+        //            ItemSlot itemSlot = __instance.character.player.itemSlots[i];
+        //            if (itemSlot.prefab != null)
+        //            {
+        //                num += 0;
+        //            }
+        //        }
+
+        //        __instance.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, 0.025f * (float)num, false);
+
+        //        return false;
+        //    }
+        //    else  
+        //    {
+        //        float weight = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Weight);
+        //        //__instance.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, weight, false);
+        //        //weight += 0.1f;
+
+        //        float num = 0f;
+        //        for (int i = 0; i < __instance.character.player.itemSlots.Length; i++)
+        //        {
+        //            ItemSlot itemSlot = __instance.character.player.itemSlots[i];
+        //            if (itemSlot.prefab != null)
+        //            {
+        //                num += itemSlot.prefab.CarryWeight;
+        //            }
+        //        }
+
+        //        __instance.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, 0.025f * num, false);
+
+        //        return false;
+        //    }
+
+        //}
+
+
         [HarmonyPatch(typeof(CharacterAfflictions), nameof(CharacterAfflictions.UpdateWeight))]
         [HarmonyPrefix]
-        public static bool Awake_Post(CharacterAfflictions __instance)
+        public static bool WeightPerUnit(CharacterAfflictions __instance)
         {
-            //float weight = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Weight);
+            int num = 0;
+            int num2 = 0;
+            float currentStatus = __instance.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Thorns);
+
 
             if (weightModifier && weightModifierToggle)
             {
-                int num = 0;
-                for (int i = 0; i < __instance.character.player.itemSlots.Length; i++)
-                {
-                    ItemSlot itemSlot = __instance.character.player.itemSlots[i];
-                    if (itemSlot.prefab != null)
-                    {
-                        num += 0;
-                    }
-                }
-
-                __instance.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, 0.025f * (float)num, false);
-
+                Debug.Log($"[Casual_Climber] ==> WeightPerUnit Disabled");
                 return false;
             }
-            else  
+
+            for (int i = 0; i < __instance.character.player.itemSlots.Length; i++)
             {
-                float weight = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Weight);
-                //__instance.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, weight, false);
-                //weight += 0.1f;
-
-                float num = 0f;
-                for (int i = 0; i < __instance.character.player.itemSlots.Length; i++)
+                ItemSlot itemSlot = __instance.character.player.itemSlots[i];
+                if (itemSlot.prefab != null)
                 {
-                    ItemSlot itemSlot = __instance.character.player.itemSlots[i];
-                    if (itemSlot.prefab != null)
+                    num += itemSlot.prefab.CarryWeight;
+                }
+            }
+            BackpackSlot backpackSlot = __instance.character.player.backpackSlot;
+            BackpackData backpackData;
+            if (!backpackSlot.IsEmpty() && backpackSlot.data.TryGetDataEntry<BackpackData>(DataEntryKey.BackpackData, out backpackData))
+            {
+                for (int j = 0; j < backpackData.itemSlots.Length; j++)
+                {
+                    ItemSlot itemSlot2 = backpackData.itemSlots[j];
+                    if (!itemSlot2.IsEmpty())
                     {
-                        num += itemSlot.prefab.CarryWeight;
+                        num += itemSlot2.prefab.CarryWeight;
                     }
                 }
-
-                __instance.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, 0.025f * num, false);
-
-                return false;
             }
- 
+            ItemSlot itemSlot3 = __instance.character.player.GetItemSlot(250);
+            if (!itemSlot3.IsEmpty())
+            {
+                num += itemSlot3.prefab.CarryWeight;
+            }
+            if (__instance.character.data.carriedPlayer != null)
+            {
+                num += 8;
+            }
+            foreach (StickyItemComponent stickyItemComponent in StickyItemComponent.ALL_STUCK_ITEMS)
+            {
+                if (stickyItemComponent.stuckToCharacter == __instance.character)
+                {
+                    num += stickyItemComponent.addWeightToStuckPlayer;
+                    num2 += stickyItemComponent.addThornsToStuckPlayer;
+                }
+            }
+            if (__instance.character.data.currentStickyItem)
+            {
+                num2 += __instance.character.data.currentStickyItem.addThornsToStuckPlayer;
+            }
+            num2 += __instance.GetTotalThornStatusIncrements();
+            if (__instance.character.data.isSkeleton)
+            {
+                num2 = 0;
+            }
+            float num3 = 0.025f * (float)num2;
+            if (num3 > currentStatus)
+            {
+                __instance.StatusSFX(CharacterAfflictions.STATUSTYPE.Thorns, num3 - currentStatus);
+                if (__instance.character.IsLocal && __instance.character == Character.observedCharacter)
+                {
+                    GUIManager.instance.AddStatusFX(CharacterAfflictions.STATUSTYPE.Thorns, num3 - currentStatus);
+                }
+                __instance.PlayParticle(CharacterAfflictions.STATUSTYPE.Thorns);
+            }
+
+            float weight1 = __instance.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Weight);
+            Debug.Log($"[Casual_Climber] ==> WeightPerUnit Before=> {weight1}");
+
+            //float weight3 = (float)num + weight1;
+            __instance.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, (weight1 + (0.025f * (float)num)), false);
+            __instance.SetStatus(CharacterAfflictions.STATUSTYPE.Thorns, 0.025f * (float)num2, false);
+            float weight2 = __instance.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Weight);
+            Debug.Log($"[Casual_Climber] ==> WeightPerUnit Enabled => num {num}");
+            Debug.Log($"[Casual_Climber] ==> WeightPerUnit After=> {weight2}");
+
+            return false;
         }
-
-
 
     }
 }
