@@ -1,4 +1,6 @@
 # ⛰️ Casual Climber for PEAK
+
+## Updated to v1.0.2.
 **Adjust player stats and afflictions for casual play.**  
 *Cheaty mod to allow friends to have very casual no worry plays*   
 
@@ -11,9 +13,10 @@
 - Increase jump height.
 - Increase walk/sprint speed.
 - Increase climbing speed.
-- Toggle player stats and status afflictions on/off indepedently via ingame menus or config.
-- Apply status afflictions to self. 
-- Multiple key bind activation methods to toggle on/off. (Change key binds in config)
+- Modify stamina drains (*sprinting, climbing, climbing-jump, and stam slowly regens while hanging still on rock face.*)
+- Toggle player stats and status afflictions on/off independently via ingame menus or config.
+- Apply status afflictions to self at 10% increments. 
+- Multiple key bind activation methods to toggle on/off. (*Change key binds in config*)
 
 ## ⚙️ Configuration
 - All values saved to config in PEAK\BepInEx\config.
