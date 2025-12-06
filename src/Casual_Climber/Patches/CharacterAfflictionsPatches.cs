@@ -65,6 +65,10 @@ namespace Casual_Climber.Patches
         public static bool keyFlag11;
         public static bool keyFlag12;
 
+        public static float weight1;
+        public static float weight2;
+        public static float weight3;
+
 
         [HarmonyPatch(typeof(CharacterAfflictions), nameof(CharacterAfflictions.UpdateNormalStatuses))]
         [HarmonyPostfix]
@@ -166,6 +170,7 @@ namespace Casual_Climber.Patches
                 //PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, weight + 0.1f, true);
                 Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, weight + 0.1f, false);
                 weight += 0.1f;
+                weight1 = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Weight);
                 keyFlag10 = false;
                 Debug.Log($"[Casual_Climber] Weight Status Value =  {weight}"); }
             if (keyFlag11)
@@ -187,6 +192,7 @@ namespace Casual_Climber.Patches
                 Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Web, 0f, false);
                 //PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, 0f, true);
                 Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, 0f, false);
+                weight1 = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Weight);
                 //PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.ClearAllStatus(false);
                 Character.localCharacter.refs.afflictions.ClearAllStatus(false);
                 keyFlag12 = false;
@@ -249,7 +255,9 @@ namespace Casual_Climber.Patches
             { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Web, 0f, false); }
             //{ PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Web, 0f, true); }
             if (weightModifier && weightModifierToggle)
-            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, 0f, false); }
+            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, 0f, false);
+                weight1 = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Weight);
+            }
             //{ PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, 0f, true); }
             if (injuryModifier && injuryModifierToggle)
             { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Injury, 0f, false); }
@@ -315,9 +323,7 @@ namespace Casual_Climber.Patches
         //    }
 
         //}
-        public static float weight1;
-        public static float weight2;
-        public static float weight3;
+
 
         [HarmonyPatch(typeof(CharacterAfflictions), nameof(CharacterAfflictions.UpdateWeight))]
         [HarmonyPrefix]
@@ -395,79 +401,84 @@ namespace Casual_Climber.Patches
 
 
 
-
-            //float weight1 = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Weight);
-
-            //Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, 0f, false);
-            //float weight1;
-            //float weight2;
-            //weight1 = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Weight);
-            //weight2 = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Weight);
-            //Debug.Log($"[Casual_Climber] ==> weight1 Before=> {weight1}");
-            //Debug.Log($"[Casual_Climber] ==> weight2 Before=> {weight2}");
-
-
-
-            //float postWeight = weight1;
-
-
-            //if (num <= 8)
-            //{
-            //    Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, 0f, false);
-            //    weight1 = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Weight);
-            //}
-            //float weight3 = (float)num + weight1;
-
             float itemWeight = 0.025f * (float)num;
 
-            if (weight1 >= 0.001f)
+
+            if (weight1 >= 0.001f && num <= 0)
             {
-                if (num >= 1)
-                {
-                    Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, weight1, false);
-                }
-                else
-                {
-                    Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, itemWeight, false);
-                }
-
-                //float itemWeight = 0.025f * (float)num;
-                //weight2 = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Weight);
-                //Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, 0f, false);
-
-                //Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, itemWeight, false);
-                weight1 = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Weight);
-
-                Debug.Log($"[Casual_Climber] ==> num {num}");
-                Debug.Log($"[Casual_Climber] ==> weight1 >= 0.001f = {weight1}");
+                Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, weight1, false);
+                //weight1 = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Weight);
+                Debug.Log($"[Casual_Climber] ==> weight1 >= 0.001f && num <= 0 - num = {num}");
+                Debug.Log($"[Casual_Climber] ==> weight1 >= 0.001f && num <= 0 - weight1 = {weight1}");
+                return false;
             }
 
             else if (weight1 <= 0f)
             {
-                Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, 0f, false);
-
-                if (num >= 1)
-                {
-                    Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, itemWeight, false);
-                    
-                }
-                else
-                {
-                    Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, weight1, false);
-                }
-
-                //float itemWeight = 0.025f * (float)num;
-                //weight2 = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Weight);
-                
-
-                //Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, weight1, false);
-                weight1 = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Weight);
-
-                Debug.Log($"[Casual_Climber] ==> num {num}");
-                Debug.Log($"[Casual_Climber] ==> weight1 <= 0.001f = {weight1}");
+                Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, itemWeight, false);
+                //weight1 = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Weight);
+                Debug.Log($"[Casual_Climber] ==> weight1 <= 0f - num = {num}");
+                Debug.Log($"[Casual_Climber] ==> weight1 <= 0f - weight1 = {weight1}");
+                return false;
+            }
+            else if (weight1 >= 0.001f && num >= 1)
+            {
+                Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, weight1, false);
+                //weight1 = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Weight);
+                Debug.Log($"[Casual_Climber] ==> weight1 >= 0.001f && num >= 1 - num = {num}");
+                Debug.Log($"[Casual_Climber] ==> weight1 >= 0.001f && num >= 1 - weight1 = {weight1}");
+                return false;
             }
 
-            return false;
+
+                //if (num >= 1)
+                //{
+                //    if (weight1 >= 0.001f)
+                //    {
+                //        //weight1 = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Weight);
+                //        Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, weight1, false);
+                //        weight1 = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Weight);
+                //        Debug.Log($"[Casual_Climber] ==> num >= 1 = {num}");
+                //        Debug.Log($"[Casual_Climber] ==> weight1 >= 0.001f = {weight1}");
+
+                //        return false;
+                //    }
+                //    else
+                //    {
+                //        Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, itemWeight, false);
+                //        weight1 = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Weight);
+                //        Debug.Log($"[Casual_Climber] ==> num >= 1 = {num}");
+                //        Debug.Log($"[Casual_Climber] ==> weight1 <= 0.001f = {weight1}");
+
+                //        return false;
+                //    }
+                //}
+
+                //if (num <= 1)
+                //{
+                //    //Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, 0f, false);
+                //    //weight1 = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Weight);
+
+                //    if (weight1 <= 0f)
+                //    {
+                //        Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, itemWeight, false);
+                //        weight1 = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Weight);
+                //        Debug.Log($"[Casual_Climber] ==> num <= 1 = {num}");
+                //        Debug.Log($"[Casual_Climber] ==> weight1 <= 0f = {weight1}");
+                //        return false;
+                //    }
+                //    else if (weight1 >= 0.001f)
+                //    {
+                //        //weight1 = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Weight);
+                //        Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, weight1, false);
+                //        weight1 = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Weight);
+                //        Debug.Log($"[Casual_Climber] ==> num <= 1 = {num}");
+                //        Debug.Log($"[Casual_Climber] ==> weight1 >= 0.001f = {weight1}");
+                //        return false; 
+                //    }
+                //}
+
+                return false;
         }
 
     }
