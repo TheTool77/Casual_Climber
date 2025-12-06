@@ -264,14 +264,12 @@ namespace Casual_Climber.Patches
             //{ PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Injury, 0f, true); }
         }
 
-
+        // Deal with item weights per slots and sticky
         [HarmonyPatch(typeof(CharacterAfflictions), nameof(CharacterAfflictions.UpdateWeight))]
         [HarmonyPrefix]
         public static bool WeightPerUnit(CharacterAfflictions __instance)
         {
             itemsWeight_Value = 0;
-            thornsAmount_Value = 0;
-            float currentStatus = __instance.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Thorns);
 
             if (weightModifier && weightModifierToggle)
             {
@@ -314,33 +312,10 @@ namespace Casual_Climber.Patches
                 if (stickyItemComponent.stuckToCharacter == __instance.character)
                 {
                     itemsWeight_Value += stickyItemComponent.addWeightToStuckPlayer;
-                    thornsAmount_Value += stickyItemComponent.addThornsToStuckPlayer;
                 }
             }
-            if (__instance.character.data.currentStickyItem)
-            {
-                thornsAmount_Value += __instance.character.data.currentStickyItem.addThornsToStuckPlayer;
-            }
-            thornsAmount_Value += __instance.GetTotalThornStatusIncrements();
-            if (__instance.character.data.isSkeleton)
-            {
-                thornsAmount_Value = 0;
-            }
-            float num3 = 0.025f * (float)thornsAmount_Value;
-            if (num3 > currentStatus)
-            {
-                __instance.StatusSFX(CharacterAfflictions.STATUSTYPE.Thorns, num3 - currentStatus);
-                if (__instance.character.IsLocal && __instance.character == Character.observedCharacter)
-                {
-                    GUIManager.instance.AddStatusFX(CharacterAfflictions.STATUSTYPE.Thorns, num3 - currentStatus);
-                }
-                __instance.PlayParticle(CharacterAfflictions.STATUSTYPE.Thorns);
-            }
-
 
             float itemsWeight = 0.025f * (float)itemsWeight_Value;
-            float thornsAmount = 0.025f * (float)thornsAmount_Value;
-
             if (weightCurrent >= 0.001f && itemsWeight_Value <= 0)
             {
                 Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, weightCurrent, false);
@@ -357,23 +332,64 @@ namespace Casual_Climber.Patches
                 //return false;
             }
 
+            return false;
+        }
+
+        // Deal with thorns amounts and sticky
+        [HarmonyPatch(typeof(CharacterAfflictions), nameof(CharacterAfflictions.UpdateWeight))]
+        [HarmonyPrefix]
+        public static bool ThornsPerUnit(CharacterAfflictions __instance)
+        {
+            thornsAmount_Value = 0;
+            float currentStatus = __instance.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Thorns);
+
+            if (thornsModifier && thornsModifierToggle)
+            {
+                Debug.Log($"[Casual_Climber] ==> ThornsPerUnit Disabled");
+                return false;
+            }
+
+            foreach (StickyItemComponent stickyItemComponent in StickyItemComponent.ALL_STUCK_ITEMS)
+            {
+                if (stickyItemComponent.stuckToCharacter == __instance.character)
+                {
+                    thornsAmount_Value += stickyItemComponent.addThornsToStuckPlayer;
+                }
+            }
+            if (__instance.character.data.currentStickyItem)
+            {
+                thornsAmount_Value += __instance.character.data.currentStickyItem.addThornsToStuckPlayer;
+            }
+            thornsAmount_Value += __instance.GetTotalThornStatusIncrements();
+            if (__instance.character.data.isSkeleton)
+            {
+                thornsAmount_Value = 0;
+            }
+            float i = 0.025f * (float)thornsAmount_Value;
+            if (i > currentStatus)
+            {
+                __instance.StatusSFX(CharacterAfflictions.STATUSTYPE.Thorns, i - currentStatus);
+                if (__instance.character.IsLocal && __instance.character == Character.observedCharacter)
+                {
+                    GUIManager.instance.AddStatusFX(CharacterAfflictions.STATUSTYPE.Thorns, i - currentStatus);
+                }
+                __instance.PlayParticle(CharacterAfflictions.STATUSTYPE.Thorns);
+            }
+
+            float thornsAmount = 0.025f * (float)thornsAmount_Value;
             if (thornsCurrent >= 0.001f && thornsAmount_Value <= 0)
             {
                 Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Thorns, thornsCurrent, true);
-                //return false;
             }
             else if (thornsCurrent <= 0f)
             {
                 Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Thorns, thornsAmount, true);
-                //return false;
             }
             else if (thornsCurrent >= 0.001f && thornsAmount_Value >= 1)
             {
                 Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Thorns, thornsCurrent, true);
-                //return false;
             }
             return false;
         }
-
     }
 }
