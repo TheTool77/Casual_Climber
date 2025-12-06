@@ -295,11 +295,11 @@ namespace Casual_Climber.Patches
 
             float itemsWeight = 0.025f * (float)itemsWeight_Value;
             if (weightCurrent >= 0.001f && itemsWeight_Value <= 0)
-            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, weightCurrent, false); }
+            { __instance.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, weightCurrent, false); }
             else if (weightCurrent <= 0f)
-            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, itemsWeight, false); }
+            { __instance.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, itemsWeight, false); }
             else if (weightCurrent >= 0.001f && itemsWeight_Value >= 1)
-            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, weightCurrent, false); }
+            { __instance.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, weightCurrent, false); }
 
             return false;
         }
@@ -337,11 +337,11 @@ namespace Casual_Climber.Patches
 
             float thornsAmount = 0.025f * (float)thornsAmount_Value;
             if (thornsCurrent >= 0.001f && thornsAmount_Value <= 0)
-            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Thorns, thornsCurrent, false); }
+            { __instance.SetStatus(CharacterAfflictions.STATUSTYPE.Thorns, thornsCurrent, false); }
             else if (thornsCurrent <= 0f)
-            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Thorns, thornsAmount, false); }
+            { __instance.SetStatus(CharacterAfflictions.STATUSTYPE.Thorns, thornsAmount, false); }
             else if (thornsCurrent >= 0.001f && thornsAmount_Value >= 1)
-            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Thorns, thornsCurrent, false); }
+            { __instance.SetStatus(CharacterAfflictions.STATUSTYPE.Thorns, thornsCurrent, false); }
 
             return false;
         }
