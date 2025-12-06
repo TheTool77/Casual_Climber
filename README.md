@@ -30,7 +30,7 @@
 - Press `Numpad +` or `=` to toggle mod on/off.
 - Press `Numpad -` or `-` to display config menu.
 
-## 🧗 Values
+## 📟 Values
 | Setting                | Values Min-Max, On-Off, Key         | Default Value | Effect                                                                                                         |
 | ---------------------- | ----------------------------------- | ------------- | -------------------------------------------------------------------------------------------------------------- |
 | Jump Height            | 15 - 60                             | 60            | Increase jump height                                                                                           |
