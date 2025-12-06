@@ -22,7 +22,7 @@
 - All values saved to config in PEAK\BepInEx\config.
 
 ## 📦 Install
-- Download via [Thunderstore](https://thunderstore.io/c/peak/) or use the thunderstore mod manager app.
+- Download via [Thunderstore](https://thunderstore.io/c/peak/p/TheTool/Casual_Climber/) or use the thunderstore mod manager app.
 - Place the `.dll` file in: /PEAK/BepInEx/plugins/
 - Launch game.
 
