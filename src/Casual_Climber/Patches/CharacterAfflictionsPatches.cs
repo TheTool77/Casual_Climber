@@ -319,19 +319,15 @@ namespace Casual_Climber.Patches
             if (weightCurrent >= 0.001f && itemsWeight_Value <= 0)
             {
                 Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, weightCurrent, false);
-                //return false;
             }
             else if (weightCurrent <= 0f)
             {
                 Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, itemsWeight, false);
-                //return false;
             }
             else if (weightCurrent >= 0.001f && itemsWeight_Value >= 1)
             {
                 Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, weightCurrent, false);
-                //return false;
             }
-
             return false;
         }
 
