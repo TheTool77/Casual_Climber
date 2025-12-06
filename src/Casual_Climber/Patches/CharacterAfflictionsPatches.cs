@@ -57,14 +57,10 @@ namespace Casual_Climber.Patches
         public static bool keyFlag10;
         public static bool keyFlag11;
         public static bool keyFlag12;
-
         public static float weightCurrent;
-        public static float thornsCurrent;
-
         public static int itemsWeight_Value = 0;
+        public static float thornsCurrent;
         public static int thornsAmount_Value = 0;
-
-
 
         [HarmonyPatch(typeof(CharacterAfflictions), nameof(CharacterAfflictions.UpdateNormalStatuses))]
         [HarmonyPostfix]
@@ -245,8 +241,7 @@ namespace Casual_Climber.Patches
             //{ PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Spores, 0f, true); }
             if (thornsModifier && thornsModifierToggle)
             { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Thorns, 0f, false);
-                thornsCurrent = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Thorns);
-            }
+                thornsCurrent = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Thorns); }
             //{ PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Thorns, 0f, true); }
             if (crabModifier && crabModifierToggle)
             { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Crab, 0f, false); }
@@ -256,8 +251,7 @@ namespace Casual_Climber.Patches
             //{ PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Web, 0f, true); }
             if (weightModifier && weightModifierToggle)
             { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, 0f, false);
-                weightCurrent = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Weight);
-            }
+                weightCurrent = Character.localCharacter.refs.afflictions.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Weight); }
             //{ PlayerHandler.GetPlayerCharacter(PhotonNetwork.LocalPlayer).refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, 0f, true); }
             if (injuryModifier && injuryModifierToggle)
             { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Injury, 0f, false); }
@@ -272,62 +266,41 @@ namespace Casual_Climber.Patches
             itemsWeight_Value = 0;
 
             if (weightModifier && weightModifierToggle)
-            {
-                Debug.Log($"[Casual_Climber] ==> WeightPerUnit Disabled");
-                return false;
-            }
+            { Debug.Log($"[Casual_Climber] ==> WeightPerUnit Disabled"); return false; }
 
-            for (int i = 0; i < __instance.character.player.itemSlots.Length; i++)
-            {
+            for (int i = 0; i < __instance.character.player.itemSlots.Length; i++) {
                 ItemSlot itemSlot = __instance.character.player.itemSlots[i];
-                if (itemSlot.prefab != null)
-                {
-                    itemsWeight_Value += itemSlot.prefab.CarryWeight;
-                }
-            }
+                if (itemSlot.prefab != null) { itemsWeight_Value += itemSlot.prefab.CarryWeight; }}
+
             BackpackSlot backpackSlot = __instance.character.player.backpackSlot;
             BackpackData backpackData;
             if (!backpackSlot.IsEmpty() && backpackSlot.data.TryGetDataEntry<BackpackData>(DataEntryKey.BackpackData, out backpackData))
             {
-                for (int j = 0; j < backpackData.itemSlots.Length; j++)
-                {
+                for (int j = 0; j < backpackData.itemSlots.Length; j++) {
                     ItemSlot itemSlot2 = backpackData.itemSlots[j];
                     if (!itemSlot2.IsEmpty())
-                    {
-                        itemsWeight_Value += itemSlot2.prefab.CarryWeight;
-                    }
-                }
+                    { itemsWeight_Value += itemSlot2.prefab.CarryWeight; }}
             }
+
             ItemSlot itemSlot3 = __instance.character.player.GetItemSlot(250);
             if (!itemSlot3.IsEmpty())
-            {
-                itemsWeight_Value += itemSlot3.prefab.CarryWeight;
-            }
+            { itemsWeight_Value += itemSlot3.prefab.CarryWeight; }
+
             if (__instance.character.data.carriedPlayer != null)
-            {
-                itemsWeight_Value += 8;
-            }
-            foreach (StickyItemComponent stickyItemComponent in StickyItemComponent.ALL_STUCK_ITEMS)
-            {
+            { itemsWeight_Value += 8; }
+
+            foreach (StickyItemComponent stickyItemComponent in StickyItemComponent.ALL_STUCK_ITEMS) {
                 if (stickyItemComponent.stuckToCharacter == __instance.character)
-                {
-                    itemsWeight_Value += stickyItemComponent.addWeightToStuckPlayer;
-                }
-            }
+                { itemsWeight_Value += stickyItemComponent.addWeightToStuckPlayer; }}
 
             float itemsWeight = 0.025f * (float)itemsWeight_Value;
             if (weightCurrent >= 0.001f && itemsWeight_Value <= 0)
-            {
-                Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, weightCurrent, false);
-            }
+            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, weightCurrent, false); }
             else if (weightCurrent <= 0f)
-            {
-                Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, itemsWeight, false);
-            }
+            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, itemsWeight, false); }
             else if (weightCurrent >= 0.001f && itemsWeight_Value >= 1)
-            {
-                Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, weightCurrent, false);
-            }
+            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Weight, weightCurrent, false); }
+
             return false;
         }
 
@@ -340,51 +313,36 @@ namespace Casual_Climber.Patches
             float currentStatus = __instance.GetCurrentStatus(CharacterAfflictions.STATUSTYPE.Thorns);
 
             if (thornsModifier && thornsModifierToggle)
-            {
-                Debug.Log($"[Casual_Climber] ==> ThornsPerUnit Disabled");
-                return false;
-            }
+            { Debug.Log($"[Casual_Climber] ==> ThornsPerUnit Disabled"); return false; }
 
-            foreach (StickyItemComponent stickyItemComponent in StickyItemComponent.ALL_STUCK_ITEMS)
-            {
+            foreach (StickyItemComponent stickyItemComponent in StickyItemComponent.ALL_STUCK_ITEMS) {
                 if (stickyItemComponent.stuckToCharacter == __instance.character)
-                {
-                    thornsAmount_Value += stickyItemComponent.addThornsToStuckPlayer;
-                }
-            }
+                { thornsAmount_Value += stickyItemComponent.addThornsToStuckPlayer; }}
+
             if (__instance.character.data.currentStickyItem)
-            {
-                thornsAmount_Value += __instance.character.data.currentStickyItem.addThornsToStuckPlayer;
-            }
+            { thornsAmount_Value += __instance.character.data.currentStickyItem.addThornsToStuckPlayer; }
             thornsAmount_Value += __instance.GetTotalThornStatusIncrements();
+
             if (__instance.character.data.isSkeleton)
-            {
-                thornsAmount_Value = 0;
-            }
+            { thornsAmount_Value = 0; }
+
             float i = 0.025f * (float)thornsAmount_Value;
             if (i > currentStatus)
             {
                 __instance.StatusSFX(CharacterAfflictions.STATUSTYPE.Thorns, i - currentStatus);
                 if (__instance.character.IsLocal && __instance.character == Character.observedCharacter)
-                {
-                    GUIManager.instance.AddStatusFX(CharacterAfflictions.STATUSTYPE.Thorns, i - currentStatus);
-                }
+                { GUIManager.instance.AddStatusFX(CharacterAfflictions.STATUSTYPE.Thorns, i - currentStatus); }
                 __instance.PlayParticle(CharacterAfflictions.STATUSTYPE.Thorns);
             }
 
             float thornsAmount = 0.025f * (float)thornsAmount_Value;
             if (thornsCurrent >= 0.001f && thornsAmount_Value <= 0)
-            {
-                Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Thorns, thornsCurrent, true);
-            }
+            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Thorns, thornsCurrent, false); }
             else if (thornsCurrent <= 0f)
-            {
-                Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Thorns, thornsAmount, true);
-            }
+            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Thorns, thornsAmount, false); }
             else if (thornsCurrent >= 0.001f && thornsAmount_Value >= 1)
-            {
-                Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Thorns, thornsCurrent, true);
-            }
+            { Character.localCharacter.refs.afflictions.SetStatus(CharacterAfflictions.STATUSTYPE.Thorns, thornsCurrent, false); }
+
             return false;
         }
     }
