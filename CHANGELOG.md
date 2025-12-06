@@ -1,9 +1,13 @@
 # Changelog
 
-# v1.0.1
+## v1.0.2
+
+- Fixed issues with *weight* and *thorns* debuff applications still present during usage.
+
+## v1.0.1
 
 - Fixed player lagging issues.
 
-# v1.0.0
+## v1.0.0
 
 - Initial Release.
