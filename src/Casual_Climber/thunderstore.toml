@@ -7,7 +7,7 @@ repository = "https://thunderstore.io"
 [package]
 namespace = "TheTool"
 name = "Casual_Climber"
-description = "Play PEAK casually.Jump higher,go faster,independently set afflictions & player stats."
+description = "Play PEAK casually. Jump higher,go faster,independently set afflictions & player stats."
 websiteUrl = "https://github.com/TheTool77/Casual_Climber"
 containsNsfwContent = false
 
